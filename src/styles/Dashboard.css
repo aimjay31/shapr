@@ -1,0 +1,98 @@
+.dashboardcontainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.title p {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;       /* allows cards to wrap on small screens */
+}
+
+.card {
+  width: 230px; 
+  height: 170px; 
+  padding: 15px;   
+  background-color: white;    
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: black;
+}
+
+.iconandheader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contentandaddition {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.contentandaddition h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.contentandaddition p {
+  margin: 0;
+  color: #555;
+}
+
+.dashboardbot {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  color: black;
+}
+
+.analytics {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.analyticstop {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.analyticstopholder {
+  flex: 1;
+  min-width: 250px;
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.analyticsbot {
+  background-color: white;
+  border-radius: 15px;
+  padding: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.right {
+  flex: 1;
+  background-color: #b900da;
+  border-radius: 15px;
+  min-width: 200px;
+  height: fit-content;
+  padding: 10px;
+}
