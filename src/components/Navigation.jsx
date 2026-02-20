@@ -1,28 +1,31 @@
 import '../styles/Navigation.css'
 
-function NavigationItem({ logo, name }) {
-  // This is the template for ONE navigation link
+import DashboardIcon from '../assets/icons/dashboard.svg?react'
+import PredictionsIcon from '../assets/icons/prediction.svg?react'
+import HistoryIcon from '../assets/icons/history.svg?react'
+import PomodoroIcon from '../assets/icons/timer.svg?react'
+
+function NavigationItem({ Icon, name }) {
   return (
     <div className="nav-item">
-      <span className="nav-logo">{logo}</span>
+      <Icon className="nav-logo" />
       <span className="nav-name">{name}</span>
     </div>
   )
 }
 
 function Navigation() {
-  // Example navigation links
   const links = [
-    { logo: 'icon', name: 'Dashboard' },
-    { logo: 'icon', name: 'Predictions' },
-    { logo: 'icon', name: 'History' },
-    { logo: 'icon', name: 'Pomodoro' },
+    { Icon: DashboardIcon, name: 'Dashboard' },
+    { Icon: PredictionsIcon, name: 'Predictions' },
+    { Icon: HistoryIcon, name: 'History' },
+    { Icon: PomodoroIcon, name: 'Pomodoro' },
   ]
 
   return (
     <nav className="navigation">
       {links.map((link, index) => (
-        <NavigationItem key={index} logo={link.logo} name={link.name} />
+        <NavigationItem key={index} Icon={link.Icon} name={link.name} />
       ))}
     </nav>
   )

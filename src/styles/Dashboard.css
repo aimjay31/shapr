@@ -9,12 +9,13 @@
   font-size: 28px;
   font-weight: bold;
   margin: 0;
+  color: black;
 }
 
 .card-row {
   display: flex;
   gap: 20px;
-  flex-wrap: wrap;       /* allows cards to wrap on small screens */
+  flex-wrap: wrap;
 }
 
 .card {
@@ -90,9 +91,15 @@
 
 .right {
   flex: 1;
-  background-color: #b900da;
+  background-color: #f3f2ff;
   border-radius: 15px;
   min-width: 200px;
-  height: fit-content;
   padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h3 {
+  margin-bottom: 10px;
 }

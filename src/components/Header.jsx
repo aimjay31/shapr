@@ -1,5 +1,6 @@
 import { useState } from "react"
 import "../styles/Header.css"
+import bell from '../assets/icons/bell.png'
 
 function Header() {
   const [open, setOpen] = useState(false)
@@ -13,7 +14,9 @@ function Header() {
       <div className="header-right">
         <span className="language">EN</span>
 
-        <span className="bell">bell icon</span>
+        <span className="bell">
+          <img src={bell} alt="bell" />
+        </span>
 
         <div className="profile" onClick={() => setOpen(!open)}>
           <img
