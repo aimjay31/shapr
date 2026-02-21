@@ -1,16 +1,9 @@
-/* Remove Vite default centering */
 html, body, #root {
   height: 100%;
   width: 100%;
   margin: 0;
 }
 
-/* Remove default body styles */
-body {
-  display: block;
-}
-
-/* Reset */
 * {
   box-sizing: border-box;
 }
@@ -28,28 +21,35 @@ body {
   height: 80px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Logo left, right items right */
+  padding: 0 30px;
   font-size: 24px;
   font-weight: bold;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  color: #6A0DAD; /* Purple text for header */
 }
 
-/* Content area */
+/* Content area: nav + main */
 .content {
   flex: 1;
   display: flex;
+  height: calc(100% - 80px); /* header height */
 }
 
 /* Navigation */
 .navigation {
   width: 250px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background-color: #F3E8FF; /* light purple for nav */
 }
 
 /* Main content */
 .main {
   flex: 1;
   display: flex;
-  background-color: rgb(247, 209, 255);
+  background-color: rgb(253, 242, 255); /* your previous main color */
   padding: 30px;
+  overflow-y: auto;
 }
