@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Login.css";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="login-page">
@@ -66,7 +68,7 @@ export default function Login() {
             </div>
 
             {/* Primary Button */}
-            <button className="login-primary" type="button">
+            <button className="login-primary" type="button" onClick={() => navigate('/dashboard')}>
               <span>Login to Dashboard</span>
               <span className="login-primary-arrow" aria-hidden="true">
                 <ArrowIcon />
