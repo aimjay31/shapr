@@ -1,6 +1,6 @@
 /* Page title */
 .dash-h1{
-  font-size:38px;
+  font-size:30px;
   font-weight:900;
   margin: 6px 0 18px;
   color:#111827;
@@ -50,7 +50,7 @@
 }
 
 .card-value{
-  font-size:40px;
+  font-size:25px;
   font-weight:900;
   color:#0b0b0b;
   line-height:1.05;
@@ -76,6 +76,12 @@
 }
 
 /* Layout grid */
+
+.dash-left{
+  display:flex;
+  flex-direction:column;
+  gap: 20px;
+}
 .dash-grid{
   display:grid;
   grid-template-columns: 1fr 340px;
@@ -104,13 +110,13 @@
   font-weight:900;
   background:#faf8ff;
   border-bottom:1px solid rgba(0,0,0,0.08);
+  color: black;
 }
 
 .panel-body{
   padding:10px 14px 14px;
 }
 
-.chart{ height:260px; }
 
 /* Table panel */
 .tablepanel{ padding:0; }
@@ -234,8 +240,7 @@
 /* Ring */
 .ring{
   position:relative;
-  height:220px;
-  display:grid;
+  height:250px;
   place-items:center;
   padding:10px 0 18px;
 }
@@ -262,6 +267,36 @@
   letter-spacing:.08em;
   opacity:.9;
 }
+
+/* Main Panel */
+.below-panel {
+  border-radius: 12px;
+  background: linear-gradient(135deg, #6b57b9, #7c5bd6);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden; /* makes title fit nicely */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Optional hover effect */
+.below-panel:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Title Section */
+.below-panel-title {
+  background: #4c1d95; /* darker purple */
+  color: white;
+  padding: 1px 18px;
+}
+
+/* Content Area (add this in your JSX if possible) */
+.insights {
+  padding: 1px 18px;
+  color: white;
+  font-weight: 600;
+}
+
 
 /* Tips */
 .tips .tips-head{
