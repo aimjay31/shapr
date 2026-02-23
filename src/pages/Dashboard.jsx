@@ -1,7 +1,8 @@
 import React from "react";
 import "../styles/Dashboard.css";
 import Navigation from "../components/Navigation";
-
+import { useState } from "react";
+import TipsComponent from "../components/TipsComponent";
 import { Line, Bar, Doughnut } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -111,9 +112,26 @@ export default function Dashboard() {
     plugins: { legend: { display: false }, tooltip: { enabled: false } },
   };
 
+  const [showTips, setShowTips] = useState(true);
+
+    <button onClick={() => setShowTips(!showTips)}>
+      Toggle Tips
+    </button>
+
+  {showTips && <TipsComponent />}
+
   return (
     <>
-      <h1 className="dash-h1">Dashboard</h1>
+      <div className="dashboard-with-button">
+        <h1 className="dash-h1">Dashboard</h1>
+        <button 
+          className="toggle-btn"
+          onClick={() => setShowTips(!showTips)}
+        >
+          {showTips ? "Hide Tips" : "Show Tips"}
+        </button>
+      </div>
+
 
       {/* Top cards */}
       <div className="dash-cards">
@@ -254,23 +272,7 @@ export default function Dashboard() {
           </div>
 
           <div className="panel tips">
-            <div className="tips-head">Tips &amp; Alerts</div>
-
-            <div className="tips-row">
-              <div className="tips-ico good"><IcoSun /></div>
-              <div>
-                <div className="tips-title">Study Tip:</div>
-                <div className="tips-desc">Try studying in a quiet environment to maximize focus.</div>
-              </div>
-            </div>
-
-            <div className="tips-row">
-              <div className="tips-ico bad"><IcoWarn /></div>
-              <div>
-                <div className="tips-title">Low Productivity:</div>
-                <div className="tips-desc">Consider taking a short break. Your productivity has dipped recently.</div>
-              </div>
-            </div>
+            {showTips && <TipsComponent/>}
           </div>
         </div>
       </div>

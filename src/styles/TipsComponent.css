@@ -1,0 +1,54 @@
+.panel.tips {
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.tips-head {
+  background: #7c5bd6;
+  color: #fff;
+  padding: 14px;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.tips-row {
+  display: flex;
+  gap: 14px;
+  padding: 18px 14px;
+  border-top: 1px solid rgba(0,0,0,0.10);
+  transition: background 0.2s ease;
+}
+
+.tips-row:hover {
+  background: rgba(124,91,214,0.05);
+}
+
+.tips-ico {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+}
+
+.tips-ico.good {
+  background: #e8fff0;
+}
+
+.tips-ico.bad {
+  background: #fff1e6;
+}
+
+.tips-title {
+  font-weight: 900;
+  margin-bottom: 6px;
+  color: #111827;
+}
+
+.tips-desc {
+  color: #6b7280;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.45;
+}
