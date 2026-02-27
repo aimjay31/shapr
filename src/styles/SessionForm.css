@@ -1,0 +1,268 @@
+/* Layout (matches screenshot spacing + dashboard look) */
+.sf-shell{
+  display:flex;
+  min-height:100vh;
+  background:#efe9ff; /* soft lavender */
+}
+
+.sf-main{
+  flex:1;
+  padding:26px 28px 34px;
+}
+
+.sf-title{
+  margin:0 0 18px;
+  font-size:34px;
+  font-weight:800;
+  letter-spacing:-0.3px;
+  color:#111;
+}
+
+/* Form wrapper */
+.sf-form{ display:block; }
+
+/* Panels */
+.sf-panel{
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 10px 24px rgba(30, 20, 60, 0.12);
+  border:1px solid rgba(40, 20, 90, 0.10);
+  overflow:hidden;
+}
+
+.sf-panel + .sf-panel{ margin-top:18px; }
+
+.sf-panel-head{
+  padding:18px 22px 8px;
+  font-weight:800;
+  color:#1a1a1a;
+  font-size:16px;
+}
+
+.sf-panel-head.withIco{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.sf-headIco{
+  width:28px;
+  height:28px;
+  border-radius:9px;
+  background:rgba(124, 58, 237, 0.12);
+  color:#7c3aed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.sf-headIco.home{
+  background:rgba(124, 58, 237, 0.10);
+}
+
+.sf-panel-body{
+  padding:10px 22px 20px;
+}
+
+/* Inputs */
+.sf-field{ margin-top:14px; }
+.sf-label{
+  display:block;
+  font-size:12px;
+  font-weight:800;
+  color:#2b2b2b;
+  margin-bottom:7px;
+}
+
+.sf-grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px 22px;
+}
+
+.sf-grid-2-tight{
+  margin-top:10px;
+}
+
+.sf-inputWrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+
+.sf-icon{
+  position:absolute;
+  left:14px;
+  color:#b8b1d8;
+  width:18px;
+  height:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.sf-input{
+  width:100%;
+  height:44px;
+  border-radius:8px;
+  border:1px solid rgba(0,0,0,0.08);
+  background:#fff;
+  padding:0 14px 0 42px;
+  outline:none;
+  box-shadow:0 8px 18px rgba(30, 20, 60, 0.10);
+  font-weight:700;
+  color:#2a2a2a;
+}
+
+.sf-input.plain{
+  padding-left:14px;
+}
+
+.sf-input:focus,
+.sf-textarea:focus{
+  border-color:rgba(124,58,237,0.45);
+  box-shadow:0 10px 22px rgba(124,58,237,0.18);
+}
+
+/* Status buttons (Productive / Unproductive) */
+.sf-mt{ margin-top:18px; }
+
+.sf-statusRow{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+  margin-top:10px;
+}
+
+.sf-statusBtn{
+  height:46px;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.08);
+  background:#f3f4f6;
+  color:#4b5563;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  box-shadow:0 10px 18px rgba(30, 20, 60, 0.10);
+  cursor:pointer;
+}
+
+.sf-statusBtn .sf-statusIcon{
+  width:22px;
+  height:22px;
+  border-radius:999px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,0.08);
+  color:#374151;
+}
+
+/* active (matches screenshot: left is purple filled) */
+.sf-statusBtn.active.ok{
+  background:#6d28d9;
+  border-color:#6d28d9;
+  color:#fff;
+}
+.sf-statusBtn.active.ok .sf-statusIcon{
+  background:rgba(255,255,255,0.25);
+  color:#fff;
+}
+
+.sf-statusBtn.active.bad{
+  background:#e5e7eb;
+  border-color:#e5e7eb;
+  color:#374151;
+}
+.sf-statusBtn.active.bad .sf-statusIcon{
+  background:rgba(0,0,0,0.10);
+  color:#374151;
+}
+
+/* Lower grid */
+.sf-lowerGrid{
+  margin-top:18px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:22px;
+}
+
+/* Sleep range (looks like screenshot) */
+.sf-sleepTop{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:14px;
+}
+
+.sf-sleepVal{
+  font-weight:900;
+  color:#6d28d9;
+  font-size:12px;
+}
+
+.sf-range{
+  width:100%;
+  margin-top:8px;
+  accent-color:#6d28d9;
+}
+
+.sf-rangeMarks{
+  display:flex;
+  justify-content:space-between;
+  font-size:11px;
+  font-weight:800;
+  color:#9ca3af;
+  margin-top:4px;
+}
+
+/* Notes */
+.sf-notesPanel{
+  margin-top:18px;
+}
+
+.sf-textarea{
+  width:100%;
+  border-radius:10px;
+  border:1px solid rgba(0,0,0,0.10);
+  background:#fff;
+  padding:12px 14px;
+  outline:none;
+  box-shadow:0 10px 18px rgba(30, 20, 60, 0.08);
+  resize:vertical;
+  font-weight:700;
+  color:#2a2a2a;
+}
+
+/* Actions */
+.sf-actions{
+  display:flex;
+  justify-content:flex-end;
+  margin-top:14px;
+}
+
+.sf-saveBtn{
+  height:44px;
+  padding:0 18px;
+  border-radius:10px;
+  border:none;
+  background:#6d28d9;
+  color:#fff;
+  font-weight:900;
+  cursor:pointer;
+  box-shadow:0 12px 22px rgba(109,40,217,0.25);
+}
+.sf-saveBtn:hover{
+  filter:brightness(1.03);
+}
+
+/* SVG sizing */
+.sf-svg{ width:18px; height:18px; }
+
+/* Responsive */
+@media (max-width: 1050px){
+  .sf-grid-2, .sf-statusRow, .sf-lowerGrid{
+    grid-template-columns:1fr;
+  }
+}
