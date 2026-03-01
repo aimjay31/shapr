@@ -1,21 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "../styles/ProfileSettings.css";
 
-export default function ProfileSettings() {
-  const [activeSection, setActiveSection] = useState("profile"); // "profile" or "settings"
-  const [showCurrentPassword, setShowCurrentPassword] = useState(false);
-  const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+const ProfileSettings = () => {
+  const [activeTab, setActiveTab] = useState("profile");
   
-  // Mock user data
-  const [profileData, setProfileData] = useState({
+  // Original data (saved state)
+  const [savedProfileData, setSavedProfileData] = useState({
     firstName: "Jane",
     lastName: "Doe",
     email: "jane.doe@university.edu",
-    bio: "",
+    bio: "Computer Science student passionate about productivity and learning.",
     role: "Student • Computer Science"
   });
 
+  // Settings state
   const [settingsData, setSettingsData] = useState({
     themeColor: "green",
     nightMode: false,
@@ -23,24 +21,42 @@ export default function ProfileSettings() {
     shareStudyStats: true,
     allowNotifications: true,
     language: "English (US)",
-    timeZone: "(GMT-08:00) Pacific Time (US & Canada)",
+    timeZone: "(GMT-08:00) Pacific Time",
     dailyStudyGoal: 4
   });
 
+  // Password state
   const [passwords, setPasswords] = useState({
     current: "",
     new: "",
     confirm: ""
   });
 
-  const handleProfileChange = (e) => {
+  // Temporary form data (for unsaved changes)
+  const [formData, setFormData] = useState({
+    firstName: savedProfileData.firstName,
+    lastName: savedProfileData.lastName,
+    email: savedProfileData.email,
+    bio: savedProfileData.bio
+  });
+
+  // Password visibility
+  const [showPasswords, setShowPasswords] = useState({
+    current: false,
+    new: false,
+    confirm: false
+  });
+
+  // Handle form input changes
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setProfileData(prev => ({
+    setFormData(prev => ({
       ...prev,
       [name]: value
     }));
   };
 
+  // Settings handlers
   const handleSettingsChange = (e) => {
     const { name, value, type, checked } = e.target;
     setSettingsData(prev => ({
@@ -49,6 +65,15 @@ export default function ProfileSettings() {
     }));
   };
 
+  // Theme color handler
+  const handleThemeColorChange = (color) => {
+    setSettingsData(prev => ({
+      ...prev,
+      themeColor: color
+    }));
+  };
+
+  // Password handlers
   const handlePasswordChange = (e) => {
     const { name, value } = e.target;
     setPasswords(prev => ({
@@ -57,54 +82,84 @@ export default function ProfileSettings() {
     }));
   };
 
+  const togglePasswordVisibility = (field) => {
+    setShowPasswords(prev => ({
+      ...prev,
+      [field]: !prev[field]
+    }));
+  };
+
+  // Save changes
   const handleSaveChanges = () => {
-    // TODO: Implement API call
+    setSavedProfileData({
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      bio: formData.bio,
+      role: savedProfileData.role
+    });
+    
     alert("Changes saved successfully!");
   };
 
+  // Cancel changes
+  const handleCancel = () => {
+    setFormData({
+      firstName: savedProfileData.firstName,
+      lastName: savedProfileData.lastName,
+      email: savedProfileData.email,
+      bio: savedProfileData.bio
+    });
+    setPasswords({
+      current: "",
+      new: "",
+      confirm: ""
+    });
+  };
+
   const handleLogout = () => {
-    // TODO: Implement logout
     console.log("Logging out...");
   };
 
   return (
-    <div className="profile-settings-page">
-      {/* Header with navigation */}
+    <div className={`profile-settings-page ${settingsData.nightMode ? 'night-mode' : ''} theme-${settingsData.themeColor}`}>
+      {/* Header */}
       <div className="page-header">
         <h1 className="page-title">Profile & Settings</h1>
         <div className="header-actions">
           <span className="language-selector">EN ▾</span>
-          <button className="save-btn" onClick={handleSaveChanges}>Save Changes</button>
+          <button className="save-btn" onClick={handleSaveChanges}>
+            Save Changes
+          </button>
         </div>
       </div>
 
-      {/* Main content */}
       <div className="profile-settings-content">
-        {/* Left sidebar with user info and navigation */}
+        {/* Sidebar */}
         <div className="settings-sidebar">
           <div className="user-info-card">
             <div className="user-avatar">
               <img 
                 src="https://i.pravatar.cc/100?img=5" 
-                alt="Jane Doe" 
+                alt="Profile" 
                 className="avatar-image"
               />
             </div>
-            <h2 className="user-name">{profileData.firstName} {profileData.lastName}</h2>
-            <p className="user-role">{profileData.role}</p>
-            <p className="user-email">{profileData.email}</p>
+            <h2 className="user-name">{savedProfileData.firstName} {savedProfileData.lastName}</h2>
+            <p className="user-role">{savedProfileData.role}</p>
+            <p className="user-email">{savedProfileData.email}</p>
           </div>
 
           <div className="sidebar-nav">
             <button 
-              className={`nav-item ${activeSection === "profile" ? "active" : ""}`}
-              onClick={() => setActiveSection("profile")}
+              className={`nav-item ${activeTab === "profile" ? "active" : ""}`}
+              onClick={() => setActiveTab("profile")}
             >
               Edit Profile
             </button>
             <button 
-              className={`nav-item ${activeSection === "settings" ? "active" : ""}`}
-              onClick={() => setActiveSection("settings")}
+              className={`nav-item ${activeTab === "settings" ? "active" : ""}`}
+              onClick={() => setActiveTab("settings")}
             >
               Settings
             </button>
@@ -116,148 +171,76 @@ export default function ProfileSettings() {
           </button>
         </div>
 
-        {/* Right content area */}
+        {/* Main Content */}
         <div className="settings-content">
-          {activeSection === "profile" ? (
-            /* Edit Profile Section */
-            <div className="profile-section">
-              <h2 className="section-title">Edit Profile</h2>
-              <p className="section-description">
-                Update your personal information and profile settings.
-              </p>
+          {/* Edit Profile Section */}
+          <div className="profile-section">
+            <h2 className="section-title">Edit Profile</h2>
+            <p className="section-description">
+              Update your personal information and profile settings.
+            </p>
 
-              <form className="profile-form">
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="firstName">First Name</label>
-                    <input
-                      type="text"
-                      id="firstName"
-                      name="firstName"
-                      value={profileData.firstName}
-                      onChange={handleProfileChange}
-                      className="form-input"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="lastName">Last Name</label>
-                    <input
-                      type="text"
-                      id="lastName"
-                      name="lastName"
-                      value={profileData.lastName}
-                      onChange={handleProfileChange}
-                      className="form-input"
-                    />
-                  </div>
-                </div>
-
+            <div className="profile-form">
+              <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
+                  <label htmlFor="firstName">First Name</label>
                   <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={profileData.email}
-                    onChange={handleProfileChange}
+                    type="text"
+                    id="firstName"
+                    name="firstName"
+                    value={formData.firstName}
+                    onChange={handleInputChange}
                     className="form-input"
+                    placeholder="Enter first name"
                   />
-                  <p className="input-note">We'll never share your email with anyone else.</p>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="bio">Short Bio</label>
-                  <textarea
-                    id="bio"
-                    name="bio"
-                    value={profileData.bio}
-                    onChange={handleProfileChange}
-                    className="form-input textarea"
-                    placeholder="Tell us a little about your study goals..."
-                    rows="3"
+                  <label htmlFor="lastName">Last Name</label>
+                  <input
+                    type="text"
+                    id="lastName"
+                    name="lastName"
+                    value={formData.lastName}
+                    onChange={handleInputChange}
+                    className="form-input"
+                    placeholder="Enter last name"
                   />
                 </div>
+              </div>
 
-                {/* Change Password Section */}
-                <div className="change-password-section">
-                  <h3 className="subsection-title">Change Password</h3>
-                  
-                  <div className="form-group">
-                    <label htmlFor="currentPassword">Current Password</label>
-                    <div className="password-input-wrapper">
-                      <input
-                        type={showCurrentPassword ? "text" : "password"}
-                        id="currentPassword"
-                        name="current"
-                        value={passwords.current}
-                        onChange={handlePasswordChange}
-                        className="form-input password-input"
-                        placeholder="••••••••"
-                      />
-                      <button
-                        type="button"
-                        className="password-toggle"
-                        onClick={() => setShowCurrentPassword(!showCurrentPassword)}
-                      >
-                        {showCurrentPassword ? "👁️" : "👁️‍🗨️"}
-                      </button>
-                    </div>
-                  </div>
+              <div className="form-group">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  className="form-input"
+                  placeholder="Enter email address"
+                />
+                <p className="input-note">We'll never share your email with anyone else.</p>
+              </div>
 
-                  <div className="form-group">
-                    <label htmlFor="newPassword">New Password</label>
-                    <div className="password-input-wrapper">
-                      <input
-                        type={showNewPassword ? "text" : "password"}
-                        id="newPassword"
-                        name="new"
-                        value={passwords.new}
-                        onChange={handlePasswordChange}
-                        className="form-input password-input"
-                        placeholder="••••••••"
-                      />
-                      <button
-                        type="button"
-                        className="password-toggle"
-                        onClick={() => setShowNewPassword(!showNewPassword)}
-                      >
-                        {showNewPassword ? "👁️" : "👁️‍🗨️"}
-                      </button>
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm New Password</label>
-                    <div className="password-input-wrapper">
-                      <input
-                        type={showConfirmPassword ? "text" : "password"}
-                        id="confirmPassword"
-                        name="confirm"
-                        value={passwords.confirm}
-                        onChange={handlePasswordChange}
-                        className="form-input password-input"
-                        placeholder="••••••••"
-                      />
-                      <button
-                        type="button"
-                        className="password-toggle"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      >
-                        {showConfirmPassword ? "👁️" : "👁️‍🗨️"}
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="form-actions">
-                  <button type="button" className="cancel-btn">Cancel</button>
-                  <button type="button" className="save-btn" onClick={handleSaveChanges}>Save Changes</button>
-                </div>
-              </form>
+              {/* BIO SECTION */}
+              <div className="form-group">
+                <label htmlFor="bio">Short Bio</label>
+                <textarea
+                  id="bio"
+                  name="bio"
+                  value={formData.bio}
+                  onChange={handleInputChange}
+                  className="form-input bio-textarea"
+                  placeholder="Tell us a little about your study goals..."
+                  rows={5}
+                />
+              </div>
             </div>
-          ) : (
-            /* Settings Section */
+          </div>
+
+          {/* Settings Section */}
+          {activeTab === "settings" && (
             <div className="settings-section">
               <h2 className="section-title">Settings</h2>
 
@@ -268,11 +251,36 @@ export default function ProfileSettings() {
                 <div className="setting-row">
                   <span className="setting-label">Theme Color</span>
                   <div className="theme-color-selector">
-                    <button className="color-option green active" title="Green"></button>
-                    <button className="color-option purple" title="Purple"></button>
-                    <button className="color-option blue" title="Blue"></button>
-                    <button className="color-option orange" title="Orange"></button>
-                    <button className="color-option red" title="Red"></button>
+                    <button 
+                      className={`color-option green ${settingsData.themeColor === "green" ? "active" : ""}`}
+                      onClick={() => handleThemeColorChange("green")}
+                      title="Green"
+                      type="button"
+                    />
+                    <button 
+                      className={`color-option purple ${settingsData.themeColor === "purple" ? "active" : ""}`}
+                      onClick={() => handleThemeColorChange("purple")}
+                      title="Purple"
+                      type="button"
+                    />
+                    <button 
+                      className={`color-option blue ${settingsData.themeColor === "blue" ? "active" : ""}`}
+                      onClick={() => handleThemeColorChange("blue")}
+                      title="Blue"
+                      type="button"
+                    />
+                    <button 
+                      className={`color-option orange ${settingsData.themeColor === "orange" ? "active" : ""}`}
+                      onClick={() => handleThemeColorChange("orange")}
+                      title="Orange"
+                      type="button"
+                    />
+                    <button 
+                      className={`color-option red ${settingsData.themeColor === "red" ? "active" : ""}`}
+                      onClick={() => handleThemeColorChange("red")}
+                      title="Red"
+                      type="button"
+                    />
                   </div>
                 </div>
 
@@ -330,11 +338,6 @@ export default function ProfileSettings() {
                     />
                   </label>
                 </div>
-
-                <div className="setting-row">
-                  <span className="setting-label">Change Password</span>
-                  <button className="link-btn">Update</button>
-                </div>
               </div>
 
               {/* Other Settings */}
@@ -364,8 +367,8 @@ export default function ProfileSettings() {
                     onChange={handleSettingsChange}
                     className="select-input"
                   >
-                    <option>(GMT-08:00) Pacific Time (US & Canada)</option>
-                    <option>(GMT-05:00) Eastern Time (US & Canada)</option>
+                    <option>(GMT-08:00) Pacific Time</option>
+                    <option>(GMT-05:00) Eastern Time</option>
                     <option>(GMT+00:00) London</option>
                     <option>(GMT+08:00) Singapore</option>
                   </select>
@@ -389,8 +392,91 @@ export default function ProfileSettings() {
               </div>
             </div>
           )}
+
+          {/* Change Password Section */}
+          <div className="change-password-section">
+            <h3 className="subsection-title">Change Password</h3>
+            
+            <div className="form-group">
+              <label htmlFor="currentPassword">Current Password</label>
+              <div className="password-input-wrapper">
+                <input
+                  type={showPasswords.current ? "text" : "password"}
+                  id="currentPassword"
+                  name="current"
+                  value={passwords.current}
+                  onChange={handlePasswordChange}
+                  className="form-input password-input"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => togglePasswordVisibility("current")}
+                >
+                  {showPasswords.current ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="newPassword">New Password</label>
+              <div className="password-input-wrapper">
+                <input
+                  type={showPasswords.new ? "text" : "password"}
+                  id="newPassword"
+                  name="new"
+                  value={passwords.new}
+                  onChange={handlePasswordChange}
+                  className="form-input password-input"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => togglePasswordVisibility("new")}
+                >
+                  {showPasswords.new ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="confirmPassword">Confirm New Password</label>
+              <div className="password-input-wrapper">
+                <input
+                  type={showPasswords.confirm ? "text" : "password"}
+                  id="confirmPassword"
+                  name="confirm"
+                  value={passwords.confirm}
+                  onChange={handlePasswordChange}
+                  className="form-input password-input"
+                  placeholder="••••••••"
+                />
+                <button
+                  type="button"
+                  className="password-toggle"
+                  onClick={() => togglePasswordVisibility("confirm")}
+                >
+                  {showPasswords.confirm ? "👁️" : "👁️‍🗨️"}
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Actions */}
+          <div className="form-actions">
+            <button type="button" className="cancel-btn" onClick={handleCancel}>
+              Cancel
+            </button>
+            <button type="button" className="save-btn" onClick={handleSaveChanges}>
+              Save Changes
+            </button>
+          </div>
         </div>
       </div>
     </div>
   );
-}
+};
+
+export default ProfileSettings;
