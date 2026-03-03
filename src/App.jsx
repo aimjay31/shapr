@@ -1,7 +1,7 @@
 import './App.css'
 import Header from './components/header'
 import Navigation from './components/navigation'
-import Dashboard from './pages/dashboard'
+import Dashboard from './pages/Dashboard'
 
 function App() {
   return (

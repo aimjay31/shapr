@@ -5,6 +5,7 @@ import PredictionsIcon from '../assets/icons/prediction.svg?react'
 import HistoryIcon from '../assets/icons/history.svg?react'
 import PomodoroIcon from '../assets/icons/timer.svg?react'
 
+// eslint-disable-next-line no-unused-vars
 function NavigationItem({ Icon, name }) {
   return (
     <div className="nav-item">
