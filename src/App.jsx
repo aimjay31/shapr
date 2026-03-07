@@ -8,6 +8,7 @@ import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import ProfileSettings from "./pages/ProfileSettings.jsx";
+import HistoryView from "./pages/History_View.jsx";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       { path: "/dashboard", element: <Dashboard /> },
 
       { path: "/profile-settings", element: <ProfileSettings /> },
+      { path: "/history", element: <HistoryView /> },
     ],
   },
 ]);
