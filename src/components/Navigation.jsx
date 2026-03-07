@@ -17,7 +17,7 @@ export default function Navigation({ children }) {
           <NavItem to="/productivity-prediction" icon={<IconPrediction />} label="Productivity Prediction" />
           <NavItem to="/history" icon={<IconHistory />} label="History" />
           <NavItem to="/analytics-reports" icon={<IconAnalytics />} label="Analytics Reports" />
-          <NavItem to="/pomodoro" icon={<IconPomodoro />} label="Pomodoro Timer" />
+          <NavItem to="/pomtime" icon={<IconPomodoro />} label="Pomodoro Timer" />
 
           <div className="nav-divider" />
 

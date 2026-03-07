@@ -9,6 +9,7 @@ import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import ProfileSettings from "./pages/ProfileSettings.jsx";
 import HistoryView from "./pages/History_View.jsx";
+import PomTime from "./pages/PomTime.jsx";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
     element: <PrivateLayout />,
     children: [
       { path: "/dashboard", element: <Dashboard /> },
+      { path: "/pomtime", element: <PomTime /> },
 
       { path: "/profile-settings", element: <ProfileSettings /> },
       { path: "/history", element: <HistoryView /> },
