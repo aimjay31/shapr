@@ -22,6 +22,7 @@ const router = createBrowserRouter([
     element: <PrivateLayout />,
     children: [
       { path: "/dashboard", element: <Dashboard /> },
+
       { path: "/profile-settings", element: <ProfileSettings /> },
     ],
   },

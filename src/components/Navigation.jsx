@@ -13,7 +13,7 @@ export default function Navigation({ children }) {
 
         <nav className="nav-menu">
           <NavItem to="/dashboard" icon={<IconDashboard />} label="Dashboard" />
-          <NavItem to="/study-session-form" icon={<IconForm />} label="Study Session Form" />
+          <NavItem to="/SessionForm" icon={<IconForm />} label="Study Session Form" />
           <NavItem to="/productivity-prediction" icon={<IconPrediction />} label="Productivity Prediction" />
           <NavItem to="/history" icon={<IconHistory />} label="History" />
           <NavItem to="/analytics-reports" icon={<IconAnalytics />} label="Analytics Reports" />
