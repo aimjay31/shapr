@@ -4,13 +4,11 @@ import Header from './components/Header'
 import Navigation from './components/Navigation'
 import Dashboard from './pages/Dashboard'
 
-function App() {
-  return (
-    <div className="container">
-      
-      <header className="header">
-        <Header/>
-      </header>
+import Landing from "./pages/Landing.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
+import ProfileSettings from "./pages/ProfileSettings.jsx";
 
       <div className="content">
         <nav className="navigation">
@@ -26,13 +24,13 @@ function App() {
       </Routes>
       </Router>
 
-        <main className="main">
-          <Dashboard/>
-        </main>
-      </div>
+      { path: "/profile-settings", element: <ProfileSettings /> },
+    ],
+  },
+]);
 
-    </div>
-  )
+function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;

@@ -1,35 +1,175 @@
-.navigation {
-  width: 250px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-  background-color: rgb(254, 239, 255);
-  gap: 15px;
-  color: black; 
+/* Whole app layout */
+.app-shell{
+  display:flex;
+  min-height:100vh;
+  background:#eee6fb; /* lavender like screenshot */
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  border-radius: 20px;
-  width: 230px;
-  cursor: pointer;
-  color: black;
+/* Sidebar */
+.nav-sidebar{
+  width:260px;
+  background:#ffffff;
+  border-right:1px solid rgba(0,0,0,0.06);
+  padding:18px 14px;
+  box-shadow: 6px 0 18px rgba(0,0,0,0.06);
 }
 
-.nav-item:hover {
-  background: #b700b7;
+.nav-brand{
+  font-size:26px;
+  font-weight:900;
+  color:#6b57b9;
+  padding:6px 10px 14px;
 }
 
-.nav-logo {
-  font-size: 18px;
-  color: #000;
+.nav-menu{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  margin-top:6px;
 }
 
-.nav-name {
-  font-size: 16px;
-  font-weight: 500;
+.nav-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 14px;
+  border-radius:16px;
+  text-decoration:none;
+  color:#6b7280;
+  font-weight:700;
+  font-size:15px;
+}
+
+.nav-ico{
+  width:22px;
+  display:grid;
+  place-items:center;
+  color:#7c879a;
+}
+
+.sico{
+  width:20px;
+  height:20px;
+  color: currentColor;
+}
+
+/* ACTIVE highlight (purple pill) */
+.nav-item.active{
+  background:#6f3ee8;
+  color:#ffffff;
+  box-shadow: 0 10px 18px rgba(111,62,232,0.25);
+}
+.nav-item.active .nav-ico{
+  color:#ffffff;
+}
+
+/* divider before Profile & Settings */
+.nav-divider{
+  height:1px;
+  background: rgba(0,0,0,0.08);
+  margin:10px 8px;
+}
+
+/* Main */
+.app-main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Topbar */
+.topbar{
+  position:relative;
+  height:60px;
+  background:#ffffff;
+  border-bottom:1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+}
+
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.topbtn{
+  height:36px;
+  padding:0 10px;
+  border-radius:10px;
+  border:0;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+  color:#111827;
+  font-weight:800;
+}
+.topbtn.icon-only{ padding:0 6px; }
+
+.topicon{ display:grid; place-items:center; }
+.tico{ width:20px; height:20px; color:#111827; }
+
+.toptext{ font-size:13px; }
+
+.topuser{
+  border:0;
+  background:transparent;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
+}
+
+.topavatar{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  object-fit:cover;
+}
+
+.caret{
+  font-weight:900;
+  color:#111827;
+}
+
+/* User dropdown */
+.user-dropdown{
+  position:absolute;
+  top:100%;
+  right:0;
+  background:#ffffff;
+  border:1px solid rgba(0,0,0,0.08);
+  border-radius:8px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  min-width:160px;
+  z-index:1000;
+  margin-top:8px;
+}
+
+.dropdown-item{
+  width:100%;
+  padding:12px 16px;
+  border:0;
+  background:transparent;
+  text-align:left;
+  cursor:pointer;
+  color:#111827;
+  font-weight:600;
+  font-size:14px;
+  border-radius:8px;
+}
+
+.dropdown-item:hover{
+  background:#f3f4f6;
+}
+
+/* content */
+.page{
+  padding:26px 26px 30px;
 }

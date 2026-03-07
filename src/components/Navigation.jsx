@@ -1,4 +1,6 @@
-import '../styles/Navigation.css'
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import "../styles/Navigation.css";
 
 import DashboardIcon from '../assets/icons/dashboard.svg?react'
 import PredictionsIcon from '../assets/icons/prediction.svg?react'
@@ -16,6 +18,15 @@ const Navigation = () => {
     { Icon: PomodoroIcon, name: 'Pomodoro' },
   ]
 
+/* ---------- Sidebar Icons (simple + consistent) ---------- */
+function IconDashboard() {
+  return (
+    <svg viewBox="0 0 24 24" className="sico" aria-hidden="true">
+      <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" fill="currentColor" />
+    </svg>
+  );
+}
+function IconForm() {
   return (
     <nav className="navigation">
       {links.map((link, index) => (
