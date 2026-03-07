@@ -7,7 +7,7 @@ import Landing from "./pages/Landing.jsx";
 import Login from "./pages/Login.jsx";
 import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
-import SessionForm from "./pages/SessionForm.jsx";
+import ProfileSettings from "./pages/ProfileSettings.jsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,8 @@ const router = createBrowserRouter([
     element: <PrivateLayout />,
     children: [
       { path: "/dashboard", element: <Dashboard /> },
-      { path: "/SessionForm", element: <SessionForm /> },
+
+      { path: "/profile-settings", element: <ProfileSettings /> },
     ],
   },
 ]);
