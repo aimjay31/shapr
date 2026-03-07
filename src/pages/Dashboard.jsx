@@ -280,4 +280,12 @@ export default function Dashboard() {
   );
 }
 
-export default Dashboard;
+/* --- small inline icons for the cards/right panels --- */
+function IcoCalendar(){return(<svg viewBox="0 0 24 24" className="big" aria-hidden="true"><path d="M7 2v3M17 2v3M4 8h16M6 5h12a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>);}
+function IcoCheck(){return(<svg viewBox="0 0 24 24" className="big" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><path d="M22 4 12 14.01l-3-3" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>);}
+function IcoClock(){return(<svg viewBox="0 0 24 24" className="big" aria-hidden="true"><path d="M12 22a10 10 0 1 1 10-10 10 10 0 0 1-10 10Z" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 6v6l4 2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>);}
+function IcoMoon(){return(<svg viewBox="0 0 24 24" className="big" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.5 6.5 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/></svg>);}
+function IcoTrend(){return(<svg viewBox="0 0 24 24" className="mini" aria-hidden="true"><path d="M4 16l6-6 4 4 6-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><path d="M18 6h2v6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>);}
+function IcoMiniCalendar(){return(<svg viewBox="0 0 24 24" className="mini purple" aria-hidden="true"><path d="M7 2v2M17 2v2M4 7h16M6 4h12a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>);}
+function IcoSun(){return(<svg viewBox="0 0 24 24" className="mini green" aria-hidden="true"><path d="M12 18a6 6 0 1 0-6-6 6 6 0 0 0 6 6Z" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M5 19l1.5-1.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/></svg>);}
+function IcoWarn(){return(<svg viewBox="0 0 24 24" className="mini orange" aria-hidden="true"><path d="M12 3 2 21h20L12 3Z" fill="none" stroke="currentColor" strokeWidth="2"/><path d="M12 9v5" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/><path d="M12 17h.01" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/></svg>);}

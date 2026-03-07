@@ -1,8 +1,7 @@
-import { BrowserRouter as Router, Routes, Route } from "react-dom";
-import './App.css'
-import Header from './components/Header'
-import Navigation from './components/Navigation'
-import Dashboard from './pages/Dashboard'
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import PublicLayout from "./layouts/PublicLayout";
+import PrivateLayout from "./layouts/PrivateLayout";
+import "./App.css";
 
 import Landing from "./pages/Landing.jsx";
 import Login from "./pages/Login.jsx";
@@ -10,19 +9,19 @@ import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import ProfileSettings from "./pages/ProfileSettings.jsx";
 
-      <div className="content">
-        <nav className="navigation">
-          <Navigation/>
-        </nav>
-        <Router>
-      <Navigation /> {/* navigation buttons */}
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/predictions" element={<Predictions />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/pomodoro" element={<Pomodoro />} />
-      </Routes>
-      </Router>
+const router = createBrowserRouter([
+  {
+    element: <PublicLayout />,
+    children: [
+      { path: "/", element: <Landing /> },
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
+    ],
+  },
+  {
+    element: <PrivateLayout />,
+    children: [
+      { path: "/dashboard", element: <Dashboard /> },
 
       { path: "/profile-settings", element: <ProfileSettings /> },
     ],
