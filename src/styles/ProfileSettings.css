@@ -32,7 +32,7 @@
   min-height: 100vh;
   background: var(--bg);
   font-family: 'DM Sans', sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-1);
   padding: 32px 36px 48px;
   display: flex;
@@ -58,7 +58,7 @@
 /* ===== PAGE TITLE ===== */
 .psp-page-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 26px;
+  font-size: 30px;
   font-weight: 800;
   color: var(--text-1);
   letter-spacing: -0.5px;
@@ -124,7 +124,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 10px;
+  font-size: 15px;
   color: white;
   cursor: pointer;
   transition: transform var(--transition), background var(--transition);
@@ -137,7 +137,7 @@
 
 .ph-name {
   font-family: 'Outfit', sans-serif;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 800;
   color: var(--text-1);
   margin-bottom: 3px;
@@ -145,14 +145,14 @@
 }
 
 .ph-role {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-2);
   margin-bottom: 3px;
   font-weight: 500;
 }
 
 .ph-email {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--text-3);
   font-style: italic;
 }
@@ -164,7 +164,7 @@
   gap: 5px;
   background: var(--accent-light);
   color: var(--accent);
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 700;
   padding: 3px 10px;
   border-radius: 20px;
@@ -178,7 +178,7 @@
   border: none;
   border-radius: var(--radius-sm);
   color: white;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
   font-family: 'DM Sans', sans-serif;
@@ -222,7 +222,7 @@
 
 .card-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 25px;
   font-weight: 700;
   color: var(--text-1);
   margin: 0 0 20px;
@@ -240,13 +240,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 15px;
   flex-shrink: 0;
 }
 
 /* ===== THEME COLOR PICKER ===== */
 .tc-label {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-3);
   text-transform: uppercase;
@@ -269,7 +269,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
   color: transparent;
   transition: all var(--transition);
@@ -318,14 +318,14 @@
 }
 
 .nm-text h4 {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-1);
   margin-bottom: 3px;
 }
 
 .nm-text p {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--text-3);
   line-height: 1.4;
   font-style: italic;
@@ -381,7 +381,7 @@ input:checked + .toggle-slider:before {
 .privacy-row:last-of-type { border-bottom: none; }
 
 .privacy-label {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--text-1);
 }
@@ -391,7 +391,7 @@ input:checked + .toggle-slider:before {
   align-items: center;
   gap: 5px;
   margin-top: 16px;
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--accent);
   background: var(--accent-light);
@@ -421,7 +421,7 @@ input:checked + .toggle-slider:before {
 .field-group { display: flex; flex-direction: column; }
 
 .field-label {
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-3);
   text-transform: uppercase;
@@ -495,7 +495,7 @@ input:checked + .toggle-slider:before {
 
 .goal-value {
   font-family: 'Outfit', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--accent);
   min-width: 52px;
@@ -516,7 +516,7 @@ input:checked + .toggle-slider:before {
   background: var(--surface);
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-2);
   cursor: pointer;
@@ -535,7 +535,7 @@ input:checked + .toggle-slider:before {
   background: var(--accent);
   border: none;
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 700;
   color: white;
   cursor: pointer;
@@ -565,7 +565,7 @@ input:checked + .toggle-slider:before {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  font-size: 12px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-3);
   background: var(--surface);
@@ -585,14 +585,14 @@ input:checked + .toggle-slider:before {
 
 .edit-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 22px;
+  font-size: 25px;
   font-weight: 800;
   color: var(--text-1);
   letter-spacing: -0.3px;
 }
 
 .edit-subtitle {
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-3);
   margin-bottom: 22px;
   font-style: italic;
@@ -618,7 +618,7 @@ input:checked + .toggle-slider:before {
 
 .form-label {
   display: block;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text-3);
   text-transform: uppercase;
@@ -631,7 +631,7 @@ input:checked + .toggle-slider:before {
   padding: 11px 16px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--text-1);
   background: var(--surface-2);
@@ -654,7 +654,7 @@ input:checked + .toggle-slider:before {
 .form-input::placeholder { color: var(--text-3); font-weight: 400; font-style: italic; }
 
 .form-helper {
-  font-size: 11px;
+  font-size: 15px;
   color: var(--text-3);
   margin-top: 5px;
   font-style: italic;
@@ -668,7 +668,7 @@ input:checked + .toggle-slider:before {
   padding: 12px 16px;
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-1);
   background: var(--surface-2);
   font-family: 'DM Sans', sans-serif;
@@ -703,7 +703,7 @@ input:checked + .toggle-slider:before {
 }
 
 .streak-label-txt {
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -712,7 +712,7 @@ input:checked + .toggle-slider:before {
 
 .streak-val {
   font-family: 'Outfit', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 800;
   color: var(--text-1);
   letter-spacing: -0.3px;
@@ -729,7 +729,7 @@ input:checked + .toggle-slider:before {
 
 .cp-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: var(--text-1);
   margin: 0 0 18px;

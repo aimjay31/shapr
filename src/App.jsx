@@ -9,6 +9,7 @@ import Signup from "./pages/Signup.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import ProfileSettings from "./pages/ProfileSettings.jsx";
 import HistoryView from "./pages/History_View.jsx";
+import SessionForm from "./pages/SessionForm.jsx";
 import PomTime from "./pages/PomTime.jsx";
 
 const router = createBrowserRouter([
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
 
       { path: "/profile-settings", element: <ProfileSettings /> },
       { path: "/history", element: <HistoryView /> },
+      {path: "/SessionForm", element: <SessionForm />},
     ],
   },
 ]);

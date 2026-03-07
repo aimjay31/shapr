@@ -2,7 +2,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* ===== FULL PAGE LAYOUT ===== */
+
 .profile-settings-page {
   display: flex;
   min-height: 100vh;

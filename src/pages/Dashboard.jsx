@@ -197,8 +197,7 @@ export default function Dashboard() {
               <div className="tabletitle">Recent Study Sessions</div>
               <div className="tablefilter">
                 <span className="filtericon">≡</span>
-                <span>All time</span>
-                <span className="filtercaret">▾</span>
+                <span>Recent</span>
               </div>
             </div>
 

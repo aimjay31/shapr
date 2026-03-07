@@ -34,7 +34,6 @@ export default function SessionForm() {
       <h1 className="sf-title">Study Session Form</h1>
 
       <form className="sf-form" onSubmit={handleSubmit}>
-          {/* Session Info */}
           <section className="sf-panel">
             <div className="sf-panel-head">Session Info</div>
 

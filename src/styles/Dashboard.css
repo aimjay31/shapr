@@ -394,4 +394,10 @@
 .toggle-btn{
   background-color: #4c1d95;
   height: 50px;
+  border-radius: 20px;
+  color: white;
+  height: 40px;
+  width: 100px;
+  border: none;
+  
 }
