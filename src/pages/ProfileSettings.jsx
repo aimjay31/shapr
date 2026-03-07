@@ -1,480 +1,313 @@
 import React, { useState } from "react";
 import "../styles/ProfileSettings.css";
 
+const EyeIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+    <circle cx="12" cy="12" r="3"/>
+  </svg>
+);
+
+const EyeOffIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+    <line x1="1" y1="1" x2="23" y2="23"/>
+  </svg>
+);
+
+const PaletteIcon = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/>
+    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/>
+    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/>
+    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/>
+    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/>
+  </svg>
+);
+
+const LockIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+  </svg>
+);
+
+const GearIcon = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="3"/>
+    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+  </svg>
+);
+
 const ProfileSettings = () => {
-  const [activeTab, setActiveTab] = useState("profile");
-  
-  // Original data (saved state)
-  const [savedProfileData, setSavedProfileData] = useState({
+  const [view, setView] = useState("settings");
+
+  const [savedProfile, setSavedProfile] = useState({
     firstName: "Jane",
     lastName: "Doe",
     email: "jane.doe@university.edu",
-    bio: "Computer Science student passionate about productivity and learning.",
-    role: "Student • Computer Science"
+    bio: "",
+    role: "Student • Computer Science",
   });
 
-  // Settings state
-  const [settingsData, setSettingsData] = useState({
-    themeColor: "green",
+  const [formData, setFormData] = useState({ ...savedProfile });
+  const [passwords, setPasswords] = useState({ new: "", confirm: "" });
+  const [showPw, setShowPw] = useState({ new: false, confirm: false });
+
+  const [settings, setSettings] = useState({
+    themeColor: "purple",
     nightMode: false,
     profilePublic: true,
-    shareStudyStats: true,
+    shareStudyStats: false,
     allowNotifications: true,
     language: "English (US)",
-    timeZone: "(GMT-08:00) Pacific Time",
-    dailyStudyGoal: 4
+    timeZone: "(GMT-08:00) Pacific Time (US & Canada)",
+    dailyStudyGoal: 4,
   });
 
-  // Password state
-  const [passwords, setPasswords] = useState({
-    current: "",
-    new: "",
-    confirm: ""
-  });
-
-  // Temporary form data (for unsaved changes)
-  const [formData, setFormData] = useState({
-    firstName: savedProfileData.firstName,
-    lastName: savedProfileData.lastName,
-    email: savedProfileData.email,
-    bio: savedProfileData.bio
-  });
-
-  // Password visibility
-  const [showPasswords, setShowPasswords] = useState({
-    current: false,
-    new: false,
-    confirm: false
-  });
-
-  // Handle form input changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  // Settings handlers
-  const handleSettingsChange = (e) => {
+  const handleSettings = (e) => {
     const { name, value, type, checked } = e.target;
-    setSettingsData(prev => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value
-    }));
+    setSettings(prev => ({ ...prev, [name]: type === "checkbox" ? checked : value }));
   };
 
-  // Theme color handler
-  const handleThemeColorChange = (color) => {
-    setSettingsData(prev => ({
-      ...prev,
-      themeColor: color
-    }));
-  };
-
-  // Password handlers
-  const handlePasswordChange = (e) => {
+  const handleForm = (e) => {
     const { name, value } = e.target;
-    setPasswords(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const togglePasswordVisibility = (field) => {
-    setShowPasswords(prev => ({
-      ...prev,
-      [field]: !prev[field]
-    }));
+  const handleSave = () => {
+    if (view === "editProfile") {
+      setSavedProfile({ ...formData, role: savedProfile.role });
+    }
+    alert("Changes saved!");
   };
 
-  // Save changes
-  const handleSaveChanges = () => {
-    setSavedProfileData({
-      firstName: formData.firstName,
-      lastName: formData.lastName,
-      email: formData.email,
-      bio: formData.bio,
-      role: savedProfileData.role
-    });
-    
-    alert("Changes saved successfully!");
-  };
-
-  // Cancel changes
   const handleCancel = () => {
-    setFormData({
-      firstName: savedProfileData.firstName,
-      lastName: savedProfileData.lastName,
-      email: savedProfileData.email,
-      bio: savedProfileData.bio
-    });
-    setPasswords({
-      current: "",
-      new: "",
-      confirm: ""
-    });
+    setFormData({ ...savedProfile });
+    setPasswords({ new: "", confirm: "" });
   };
 
-  const handleLogout = () => {
-    console.log("Logging out...");
-  };
+  const tc = `theme-${settings.themeColor}`;
+  const nm = settings.nightMode ? "night-mode" : "";
 
   return (
-    <div className={`profile-settings-page ${settingsData.nightMode ? 'night-mode' : ''} theme-${settingsData.themeColor}`}>
-      {/* Header */}
-      <div className="page-header">
-        <h1 className="page-title">Profile & Settings</h1>
-        <div className="header-actions">
-          <span className="language-selector">EN ▾</span>
-          <button className="save-btn" onClick={handleSaveChanges}>
-            Save Changes
-          </button>
-        </div>
-      </div>
+    <div className={`profile-settings-page ${nm} ${tc}`}>
 
-      <div className="profile-settings-content">
-        {/* Sidebar */}
-        <div className="settings-sidebar">
-          <div className="user-info-card">
-            <div className="user-avatar">
-              <img 
-                src="https://i.pravatar.cc/100?img=5" 
-                alt="Profile" 
-                className="avatar-image"
-              />
+      {/* ===== SETTINGS VIEW ===== */}
+      {view === "settings" && (
+        <>
+          <h1 className="psp-page-title">Settings</h1>
+
+          {/* Profile Header */}
+          <div className="profile-header-card anim-1">
+            <div className="ph-avatar-wrap">
+              <img src="https://i.pravatar.cc/150?img=5" alt="Jane Doe" />
+              <div className="ph-edit-dot">✏</div>
             </div>
-            <h2 className="user-name">{savedProfileData.firstName} {savedProfileData.lastName}</h2>
-            <p className="user-role">{savedProfileData.role}</p>
-            <p className="user-email">{savedProfileData.email}</p>
-          </div>
-
-          <div className="sidebar-nav">
-            <button 
-              className={`nav-item ${activeTab === "profile" ? "active" : ""}`}
-              onClick={() => setActiveTab("profile")}
-            >
+            <div className="ph-info">
+              <p className="ph-name">{savedProfile.firstName} {savedProfile.lastName}</p>
+              <p className="ph-role">{savedProfile.role}</p>
+              <p className="ph-email">{savedProfile.email}</p>
+              <span className="ph-badge">✦ Pro Member</span>
+            </div>
+            <button className="edit-profile-btn" onClick={() => setView("editProfile")}>
               Edit Profile
             </button>
-            <button 
-              className={`nav-item ${activeTab === "settings" ? "active" : ""}`}
-              onClick={() => setActiveTab("settings")}
-            >
-              Settings
-            </button>
           </div>
 
-          <button className="logout-btn" onClick={handleLogout}>
-            <span className="logout-icon">↪</span>
-            Logout
-          </button>
-        </div>
+          {/* Appearance + Privacy row */}
+          <div className="cards-row anim-2">
 
-        {/* Main Content */}
-        <div className="settings-content">
-          {/* Edit Profile Section */}
-          <div className="profile-section">
-            <h2 className="section-title">Edit Profile</h2>
-            <p className="section-description">
-              Update your personal information and profile settings.
-            </p>
+            {/* Appearance */}
+            <div className="settings-card">
+              <h3 className="card-title">
+                <span className="card-icon"><PaletteIcon /></span>
+                Appearance
+              </h3>
 
-            <div className="profile-form">
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="firstName">First Name</label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    name="firstName"
-                    value={formData.firstName}
-                    onChange={handleInputChange}
-                    className="form-input"
-                    placeholder="Enter first name"
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="lastName">Last Name</label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    name="lastName"
-                    value={formData.lastName}
-                    onChange={handleInputChange}
-                    className="form-input"
-                    placeholder="Enter last name"
-                  />
-                </div>
+              <div className="tc-label">Theme Color</div>
+              <div className="tc-dots">
+                {["purple","blue","green","red"].map(c => (
+                  <button
+                    key={c}
+                    type="button"
+                    className={`tc-dot c-${c} ${settings.themeColor === c ? "active" : ""}`}
+                    onClick={() => setSettings(p => ({ ...p, themeColor: c }))}
+                    title={c.charAt(0).toUpperCase() + c.slice(1)}
+                  >
+                    {settings.themeColor === c ? "✓" : ""}
+                  </button>
+                ))}
               </div>
 
-              <div className="form-group">
-                <label htmlFor="email">Email Address</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  className="form-input"
-                  placeholder="Enter email address"
-                />
-                <p className="input-note">We'll never share your email with anyone else.</p>
-              </div>
-
-              {/* BIO SECTION */}
-              <div className="form-group">
-                <label htmlFor="bio">Short Bio</label>
-                <textarea
-                  id="bio"
-                  name="bio"
-                  value={formData.bio}
-                  onChange={handleInputChange}
-                  className="form-input bio-textarea"
-                  placeholder="Tell us a little about your study goals..."
-                  rows={5}
-                />
+              <div className="nm-row">
+                <div className="nm-text">
+                  <h4>Night Mode</h4>
+                  <p>Switch between light and dark themes</p>
+                </div>
+                <label className="toggle-switch">
+                  <input type="checkbox" name="nightMode" checked={settings.nightMode} onChange={handleSettings} />
+                  <span className="toggle-slider" />
+                </label>
               </div>
             </div>
-          </div>
 
-          {/* Settings Section */}
-          {activeTab === "settings" && (
-            <div className="settings-section">
-              <h2 className="section-title">Settings</h2>
+            {/* Privacy & Security */}
+            <div className="settings-card">
+              <h3 className="card-title">
+                <span className="card-icon"><LockIcon /></span>
+                Privacy &amp; Security
+              </h3>
 
-              {/* Appearance */}
-              <div className="settings-group">
-                <h3 className="subsection-title">Appearance</h3>
-                
-                <div className="setting-row">
-                  <span className="setting-label">Theme Color</span>
-                  <div className="theme-color-selector">
-                    <button 
-                      className={`color-option green ${settingsData.themeColor === "green" ? "active" : ""}`}
-                      onClick={() => handleThemeColorChange("green")}
-                      title="Green"
-                      type="button"
-                    />
-                    <button 
-                      className={`color-option purple ${settingsData.themeColor === "purple" ? "active" : ""}`}
-                      onClick={() => handleThemeColorChange("purple")}
-                      title="Purple"
-                      type="button"
-                    />
-                    <button 
-                      className={`color-option blue ${settingsData.themeColor === "blue" ? "active" : ""}`}
-                      onClick={() => handleThemeColorChange("blue")}
-                      title="Blue"
-                      type="button"
-                    />
-                    <button 
-                      className={`color-option orange ${settingsData.themeColor === "orange" ? "active" : ""}`}
-                      onClick={() => handleThemeColorChange("orange")}
-                      title="Orange"
-                      type="button"
-                    />
-                    <button 
-                      className={`color-option red ${settingsData.themeColor === "red" ? "active" : ""}`}
-                      onClick={() => handleThemeColorChange("red")}
-                      title="Red"
-                      type="button"
-                    />
-                  </div>
-                </div>
-
-                <div className="setting-row">
-                  <span className="setting-label">Night Mode</span>
+              {[
+                { name: "profilePublic",      label: "Make profile public" },
+                { name: "shareStudyStats",    label: "Share study stats" },
+                { name: "allowNotifications", label: "Allow notifications" },
+              ].map(({ name, label }) => (
+                <div className="privacy-row" key={name}>
+                  <span className="privacy-label">{label}</span>
                   <label className="toggle-switch">
-                    <input 
-                      type="checkbox" 
-                      name="nightMode"
-                      checked={settingsData.nightMode}
-                      onChange={handleSettingsChange}
-                    />
-                    <span className="toggle-slider"></span>
-                  </label>
-                  <span className="setting-note">Switch between light and dark themes</span>
-                </div>
-              </div>
-
-              {/* Privacy & Security */}
-              <div className="settings-group">
-                <h3 className="subsection-title">Privacy & Security</h3>
-                
-                <div className="setting-row">
-                  <span className="setting-label">Make profile public</span>
-                  <label className="checkbox">
-                    <input 
-                      type="checkbox" 
-                      name="profilePublic"
-                      checked={settingsData.profilePublic}
-                      onChange={handleSettingsChange}
-                    />
+                    <input type="checkbox" name={name} checked={settings[name]} onChange={handleSettings} />
+                    <span className="toggle-slider" />
                   </label>
                 </div>
+              ))}
 
-                <div className="setting-row">
-                  <span className="setting-label">Share study stats</span>
-                  <label className="checkbox">
-                    <input 
-                      type="checkbox" 
-                      name="shareStudyStats"
-                      checked={settingsData.shareStudyStats}
-                      onChange={handleSettingsChange}
-                    />
-                  </label>
-                </div>
-
-                <div className="setting-row">
-                  <span className="setting-label">Allow notifications</span>
-                  <label className="checkbox">
-                    <input 
-                      type="checkbox" 
-                      name="allowNotifications"
-                      checked={settingsData.allowNotifications}
-                      onChange={handleSettingsChange}
-                    />
-                  </label>
-                </div>
-              </div>
-
-              {/* Other Settings */}
-              <div className="settings-group">
-                <h3 className="subsection-title">Other Settings</h3>
-                
-                <div className="setting-row">
-                  <span className="setting-label">Language</span>
-                  <select 
-                    name="language" 
-                    value={settingsData.language}
-                    onChange={handleSettingsChange}
-                    className="select-input"
-                  >
-                    <option>English (US)</option>
-                    <option>English (UK)</option>
-                    <option>Spanish</option>
-                    <option>French</option>
-                  </select>
-                </div>
-
-                <div className="setting-row">
-                  <span className="setting-label">Time Zone</span>
-                  <select 
-                    name="timeZone" 
-                    value={settingsData.timeZone}
-                    onChange={handleSettingsChange}
-                    className="select-input"
-                  >
-                    <option>(GMT-08:00) Pacific Time</option>
-                    <option>(GMT-05:00) Eastern Time</option>
-                    <option>(GMT+00:00) London</option>
-                    <option>(GMT+08:00) Singapore</option>
-                  </select>
-                </div>
-
-                <div className="setting-row">
-                  <span className="setting-label">Study Goal (Daily)</span>
-                  <div className="goal-input-wrapper">
-                    <input
-                      type="number"
-                      name="dailyStudyGoal"
-                      value={settingsData.dailyStudyGoal}
-                      onChange={handleSettingsChange}
-                      min="1"
-                      max="24"
-                      className="goal-input"
-                    />
-                    <span className="goal-unit">hrs</span>
-                  </div>
-                </div>
-              </div>
+              <button className="change-pw-link" onClick={() => setView("editProfile")}>
+                🔑 Change Password
+              </button>
             </div>
-          )}
+          </div>
 
-          {/* Change Password Section */}
-          <div className="change-password-section">
-            <h3 className="subsection-title">Change Password</h3>
-            
-            <div className="form-group">
-              <label htmlFor="currentPassword">Current Password</label>
-              <div className="password-input-wrapper">
-                <input
-                  type={showPasswords.current ? "text" : "password"}
-                  id="currentPassword"
-                  name="current"
-                  value={passwords.current}
-                  onChange={handlePasswordChange}
-                  className="form-input password-input"
-                  placeholder="••••••••"
-                />
-                <button
-                  type="button"
-                  className="password-toggle"
-                  onClick={() => togglePasswordVisibility("current")}
-                >
-                  {showPasswords.current ? "👁️" : "👁️‍🗨️"}
-                </button>
+          {/* Other Settings */}
+          <div className="other-settings-card anim-3">
+            <h3 className="card-title">
+              <span className="card-icon"><GearIcon /></span>
+              Other Settings
+            </h3>
+
+            <div className="other-fields-row">
+              <div className="field-group">
+                <div className="field-label">Language</div>
+                <select name="language" value={settings.language} onChange={handleSettings} className="setting-select">
+                  <option>English (US)</option>
+                  <option>English (UK)</option>
+                  <option>Spanish</option>
+                  <option>French</option>
+                </select>
+              </div>
+              <div className="field-group">
+                <div className="field-label">Time Zone</div>
+                <select name="timeZone" value={settings.timeZone} onChange={handleSettings} className="setting-select">
+                  <option>(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                  <option>(GMT-05:00) Eastern Time</option>
+                  <option>(GMT+00:00) London</option>
+                  <option>(GMT+08:00) Singapore</option>
+                </select>
               </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="newPassword">New Password</label>
-              <div className="password-input-wrapper">
+            <div className="field-label">Study Goal (Daily)</div>
+            <div className="goal-row-wrap">
+              <input
+                type="range"
+                className="goal-slider"
+                name="dailyStudyGoal"
+                min={1} max={12}
+                value={settings.dailyStudyGoal}
+                onChange={handleSettings}
+              />
+              <span className="goal-value">{settings.dailyStudyGoal} hrs</span>
+            </div>
+          </div>
+
+          <div className="psp-footer anim-4">
+            <button className="btn-cancel" onClick={handleCancel}>Discard</button>
+            <button className="btn-save" onClick={handleSave}>Save Changes</button>
+          </div>
+        </>
+      )}
+
+      {/* ===== EDIT PROFILE VIEW ===== */}
+      {view === "editProfile" && (
+        <>
+          <div className="edit-header-row anim-1">
+            <button className="back-link" onClick={() => setView("settings")}>← Back to Settings</button>
+            <h2 className="edit-title">Edit Profile</h2>
+          </div>
+          <p className="edit-subtitle anim-1">Update your personal information and profile settings.</p>
+
+          <div className="edit-card anim-2">
+            <div className="form-row-2">
+              <div>
+                <label className="form-label">First Name</label>
+                <input type="text" name="firstName" value={formData.firstName} onChange={handleForm} className="form-input" placeholder="Jane" />
+              </div>
+              <div>
+                <label className="form-label">Last Name</label>
+                <input type="text" name="lastName" value={formData.lastName} onChange={handleForm} className="form-input" placeholder="Doe" />
+              </div>
+            </div>
+
+            <div className="form-field">
+              <label className="form-label">Email Address</label>
+              <input type="email" name="email" value={formData.email} onChange={handleForm} className="form-input" placeholder="jane.doe@university.edu" />
+              <p className="form-helper">✦ We'll never share your email with anyone else.</p>
+            </div>
+
+            <div className="form-field">
+              <label className="form-label">Short Bio</label>
+              <textarea name="bio" value={formData.bio} onChange={handleForm} className="form-textarea" placeholder="Tell us a little about your study goals..." rows={4} />
+            </div>
+
+            <div className="streak-badge">
+              <span className="streak-label-txt">Study Streak</span>
+              <span className="streak-fire">🔥</span>
+              <span className="streak-val">12 days</span>
+            </div>
+
+            <div className="cp-divider" />
+            <h3 className="cp-title">Change Password</h3>
+
+            <div className="form-field">
+              <label className="form-label">New Password</label>
+              <div className="pw-wrap">
                 <input
-                  type={showPasswords.new ? "text" : "password"}
-                  id="newPassword"
-                  name="new"
+                  type={showPw.new ? "text" : "password"}
                   value={passwords.new}
-                  onChange={handlePasswordChange}
-                  className="form-input password-input"
+                  onChange={e => setPasswords(p => ({ ...p, new: e.target.value }))}
+                  className="form-input"
                   placeholder="••••••••"
                 />
-                <button
-                  type="button"
-                  className="password-toggle"
-                  onClick={() => togglePasswordVisibility("new")}
-                >
-                  {showPasswords.new ? "👁️" : "👁️‍🗨️"}
+                <button type="button" className="pw-toggle" onClick={() => setShowPw(p => ({ ...p, new: !p.new }))}>
+                  {showPw.new ? <EyeOffIcon /> : <EyeIcon />}
                 </button>
               </div>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="confirmPassword">Confirm New Password</label>
-              <div className="password-input-wrapper">
+            <div className="form-field" style={{ marginBottom: 0 }}>
+              <label className="form-label">Confirm New Password</label>
+              <div className="pw-wrap">
                 <input
-                  type={showPasswords.confirm ? "text" : "password"}
-                  id="confirmPassword"
-                  name="confirm"
+                  type={showPw.confirm ? "text" : "password"}
                   value={passwords.confirm}
-                  onChange={handlePasswordChange}
-                  className="form-input password-input"
+                  onChange={e => setPasswords(p => ({ ...p, confirm: e.target.value }))}
+                  className="form-input"
                   placeholder="••••••••"
                 />
-                <button
-                  type="button"
-                  className="password-toggle"
-                  onClick={() => togglePasswordVisibility("confirm")}
-                >
-                  {showPasswords.confirm ? "👁️" : "👁️‍🗨️"}
+                <button type="button" className="pw-toggle" onClick={() => setShowPw(p => ({ ...p, confirm: !p.confirm }))}>
+                  {showPw.confirm ? <EyeOffIcon /> : <EyeIcon />}
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Form Actions */}
-          <div className="form-actions">
-            <button type="button" className="cancel-btn" onClick={handleCancel}>
-              Cancel
-            </button>
-            <button type="button" className="save-btn" onClick={handleSaveChanges}>
-              Save Changes
-            </button>
+          <div className="psp-footer anim-3">
+            <button className="btn-cancel" onClick={handleCancel}>Discard</button>
+            <button className="btn-save" onClick={handleSave}>Save Changes</button>
           </div>
-        </div>
-      </div>
+        </>
+      )}
     </div>
   );
 };
