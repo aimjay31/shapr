@@ -8,19 +8,16 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      {/* Top Bar */}
       <header className="login-topbar">
         <div className="login-brand">ShapR</div>
       </header>
 
-      {/* Content */}
       <main className="login-main">
         <section className="login-card">
           <div className="login-card-inner">
             <h1 className="login-title">ShapR</h1>
             <p className="login-subtitle">Welcome Back!</p>
 
-            {/* Email */}
             <label className="login-label" htmlFor="email">
               Email Address
             </label>
@@ -36,7 +33,6 @@ export default function Login() {
               />
             </div>
 
-            {/* Password row label + forgot */}
             <div className="login-row-between">
               <label className="login-label" htmlFor="password">
                 Password
@@ -46,7 +42,6 @@ export default function Login() {
               </button>
             </div>
 
-            {/* Password */}
             <div className="login-input-wrap">
               <span className="login-input-icon" aria-hidden="true">
                 <LockIcon />
@@ -58,49 +53,48 @@ export default function Login() {
                 type={showPassword ? "text" : "password"}
               />
               <button
-                className="login-eye"
+                className="login-pass-toggle"
                 type="button"
                 aria-label={showPassword ? "Hide password" : "Show password"}
                 onClick={() => setShowPassword((v) => !v)}
               >
-                <EyeIcon />
+                {showPassword ? "Hide" : "Show"}
               </button>
             </div>
 
-            {/* Primary Button */}
-            <button className="login-primary" type="button" onClick={() => navigate('/dashboard')}>
+            <button
+              className="login-btn-primary"
+              type="button"
+              onClick={() => navigate("/dashboard")}
+            >
               <span>Login to Dashboard</span>
               <span className="login-primary-arrow" aria-hidden="true">
                 <ArrowIcon />
               </span>
             </button>
 
-            {/* Divider */}
             <div className="login-divider">
-              <span className="line" />
-              <span className="text">OR CONTINUE WITH</span>
-              <span className="line" />
+              <span>or continue with</span>
             </div>
 
-            {/* Social Buttons */}
             <div className="login-social">
-              <button className="social-btn" type="button">
+              <button className="login-btn-social" type="button">
                 <GoogleIcon />
                 <span>Google</span>
               </button>
-              <button className="social-btn" type="button">
+              <button className="login-btn-social" type="button">
                 <FacebookIcon />
                 <span>Facebook</span>
               </button>
             </div>
 
-            {/* Bottom divider */}
-            <div className="login-bottom-line" />
-
-            {/* Footer */}
-            <p className="login-footer">
+            <p className="login-footer-text">
               Don&apos;t have an account?{" "}
-              <button className="login-link" type="button">
+              <button
+                className="login-link login-footer-link"
+                type="button"
+                onClick={() => navigate("/signup")}
+              >
                 Sign up for free
               </button>
             </p>
@@ -111,100 +105,36 @@ export default function Login() {
   );
 }
 
-/* ---------- Icons (inline SVG for pixel consistency) ---------- */
-
 function MailIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="ico" aria-hidden="true">
-      <path
-        d="M4 6h16v12H4z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        opacity="0.9"
-      />
-      <path
-        d="M4 7l8 6 8-6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinejoin="round"
-      />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="l-icon" aria-hidden="true">
+      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+      <polyline points="22,6 12,13 2,6" />
     </svg>
   );
 }
 
 function LockIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="ico" aria-hidden="true">
-      <path
-        d="M7 11V8a5 5 0 0 1 10 0v3"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-      <path
-        d="M6 11h12v10H6z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-      <path
-        d="M12 15v3"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
-function EyeIcon() {
-  return (
-    <svg viewBox="0 0 24 24" className="ico eye-ico" aria-hidden="true">
-      <path
-        d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
-      <path
-        d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-      />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="l-icon" aria-hidden="true">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 10 0v4" />
     </svg>
   );
 }
 
 function ArrowIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="ico" aria-hidden="true">
-      <path
-        d="M5 12h12"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-      />
-      <path
-        d="M13 6l6 6-6 6"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2.2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="l-icon-sm" aria-hidden="true">
+      <line x1="5" y1="12" x2="19" y2="12" />
+      <polyline points="12 5 19 12 12 19" />
     </svg>
   );
 }
 
 function GoogleIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="brand-ico" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="l-icon" aria-hidden="true">
       <path
         d="M21.6 12.2c0-.7-.1-1.2-.2-1.8H12v3.4h5.4c-.2 1-.9 2.5-2.5 3.5v2.2h3.1c1.8-1.6 2.6-4 2.6-6.3z"
         fill="#4285F4"
@@ -227,7 +157,7 @@ function GoogleIcon() {
 
 function FacebookIcon() {
   return (
-    <svg viewBox="0 0 24 24" className="brand-ico" aria-hidden="true">
+    <svg viewBox="0 0 24 24" className="l-icon" aria-hidden="true">
       <circle cx="12" cy="12" r="10" fill="#2F55A4" />
       <path
         d="M13.2 18v-5h1.7l.3-2h-2V9.7c0-.6.2-1 .9-1h1.2V6.9c-.2 0-.9-.1-1.8-.1-1.8 0-3 1.1-3 3.1V11H8.9v2h1.6v5h2.7z"
