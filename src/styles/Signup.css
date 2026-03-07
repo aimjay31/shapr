@@ -1,23 +1,23 @@
-.login-page {
+.signup-page {
   min-height: 100vh;
-  background-color: #f9fafb;
+  background-color: #f9fafb; /* Clean light background */
   display: flex;
   flex-direction: column;
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-.login-topbar {
+.signup-topbar {
   padding: 1.5rem 3rem;
 }
 
-.login-brand {
+.signup-brand {
   font-size: 1.6rem;
   font-weight: 800;
   color: #6a0dad;
   letter-spacing: -1px;
 }
 
-.login-main {
+.signup-main {
   flex: 1;
   display: flex;
   align-items: center;
@@ -25,7 +25,7 @@
   padding: 1rem;
 }
 
-.login-card {
+.signup-card {
   background: #ffffff;
   width: 100%;
   max-width: 420px;
@@ -34,26 +34,22 @@
   padding: 2.5rem;
 }
 
-.login-card-inner {
-  width: 100%;
-}
-
-.login-title {
+.signup-title {
   font-size: 2.2rem;
   font-weight: 800;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: #6a0dad;
+  color:#6a0dad;
 }
 
-.login-subtitle {
+.signup-subtitle {
   text-align: center;
   color: #6b7280;
   margin-bottom: 2rem;
   font-size: 0.95rem;
 }
 
-.login-label {
+.signup-label {
   display: block;
   font-size: 0.85rem;
   font-weight: 600;
@@ -61,20 +57,12 @@
   color: #374151;
 }
 
-.login-row-between {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.4rem;
-  margin-top: 0.25rem;
-}
-
-.login-input-wrap {
+.signup-input-wrap {
   position: relative;
   margin-bottom: 1.25rem;
 }
 
-.login-input-icon {
+.signup-input-icon {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -82,28 +70,27 @@
   color: #9ca3af;
 }
 
-.login-input {
+.signup-input {
   width: 100%;
   padding: 13px 13px 13px 44px;
   border: 1.5px solid #e5e7eb;
   border-radius: 12px;
   font-size: 1rem;
   transition: all 0.2s ease;
+  color: #f9fafb;
+}
+
+.signup-card .signup-input {
   background: #f3f4f6;
   color: #111827;
 }
 
-.login-input:focus {
+.signup-input:focus {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(106, 13, 173, 0.08);
-  border-color: #d8b4fe;
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
 }
 
-.login-input::placeholder {
-  color: #9ca3af;
-}
-
-.login-pass-toggle {
+.signup-pass-toggle {
   position: absolute;
   right: 14px;
   top: 50%;
@@ -116,7 +103,7 @@
   cursor: pointer;
 }
 
-.login-btn-primary {
+.signup-btn-primary {
   width: 100%;
   background: #6a0dad;
   color: white;
@@ -133,17 +120,11 @@
   margin-top: 1rem;
 }
 
-.login-btn-primary:hover {
+.signup-btn-primary:hover {
   background: #560a91;
 }
 
-.login-primary-arrow {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.login-divider {
+.signup-divider {
   margin: 1.5rem 0;
   display: flex;
   align-items: center;
@@ -151,26 +132,18 @@
   font-size: 0.8rem;
 }
 
-.login-divider::before,
-.login-divider::after {
+.signup-divider::before, .signup-divider::after {
   content: "";
   flex: 1;
   height: 1px;
   background: #e5e7eb;
 }
 
-.login-divider span {
+.signup-divider span {
   padding: 0 12px;
-  text-transform: none;
 }
 
-.login-social {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-}
-
-.login-btn-social {
+.signup-btn-google {
   width: 100%;
   background: white;
   border: 1.5px solid #e5e7eb;
@@ -185,51 +158,18 @@
   color: #111827;
 }
 
-.login-btn-social:hover {
-  background: #f9fafb;
-}
-
-.login-footer-text {
+.signup-footer-text {
   text-align: center;
   margin-top: 1.5rem;
   font-size: 0.9rem;
   color: #6b7280;
 }
 
-.login-link {
+.signup-footer-text a {
   color: #6a0dad;
   font-weight: 700;
   text-decoration: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
 }
 
-.login-footer-link {
-  font-size: inherit;
-}
-
-.l-icon {
-  width: 20px;
-  height: 20px;
-}
-
-.l-icon-sm {
-  width: 18px;
-  height: 18px;
-}
-
-@media (max-width: 640px) {
-  .login-topbar {
-    padding: 1.25rem 1.25rem;
-  }
-
-  .login-card {
-    padding: 1.5rem;
-  }
-
-  .login-social {
-    grid-template-columns: 1fr;
-  }
-}
+.s-icon { width: 20px; height: 20px; }
+.s-icon-sm { width: 18px; height: 18px; }
