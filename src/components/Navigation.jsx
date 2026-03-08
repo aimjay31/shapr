@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { useNightMode } from "../context/NightModeContext";
 import "../styles/Navigation.css";
 
 export default function Navigation({ children }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
+  const { nightMode, toggleNightMode, themeColor } = useNightMode();
+
   return (
-    <div className="app-shell">
+    <div className={`app-shell${nightMode ? " night-mode" : ""} theme-${themeColor}`}>
       {/* SIDEBAR */}
       <aside className="nav-sidebar">
         <div className="nav-brand">ShapR</div>
 
         <nav className="nav-menu">
-          <NavItem to="/dashboard" icon={<IconDashboard />} label="Dashboard" />
-          <NavItem to="/SessionForm" icon={<IconForm />} label="Study Session Form" />
+          <NavItem to="/dashboard"               icon={<IconDashboard />}  label="Dashboard" />
+          <NavItem to="/SessionForm"             icon={<IconForm />}       label="Study Session Form" />
           <NavItem to="/productivity-prediction" icon={<IconPrediction />} label="Productivity Prediction" />
-          <NavItem to="/history" icon={<IconHistory />} label="History" />
-          <NavItem to="/analytics-reports" icon={<IconAnalytics />} label="Analytics Reports" />
-          <NavItem to="/pomtime" icon={<IconPomodoro />} label="Pomodoro Timer" />
+          <NavItem to="/history"                 icon={<IconHistory />}    label="History" />
+          <NavItem to="/analytics-reports"       icon={<IconAnalytics />}  label="Analytics Reports" />
+          <NavItem to="/pomtime"                 icon={<IconPomodoro />}   label="Pomodoro Timer" />
 
           <div className="nav-divider" />
 
@@ -37,6 +40,19 @@ export default function Navigation({ children }) {
               <span className="toptext">EN</span>
             </button>
 
+            {/* 🌙 Night Mode Toggle */}
+            <button
+              className="topbtn icon-only night-toggle"
+              type="button"
+              aria-label="Toggle night mode"
+              onClick={toggleNightMode}
+              title={nightMode ? "Switch to Light Mode" : "Switch to Night Mode"}
+            >
+              <span className="topicon">
+                {nightMode ? <IconSun /> : <IconMoon />}
+              </span>
+            </button>
+
             <button className="topbtn icon-only" type="button" aria-label="Notifications">
               <span className="topicon"><IconBell /></span>
             </button>
@@ -52,9 +68,9 @@ export default function Navigation({ children }) {
 
             {showDropdown && (
               <div className="user-dropdown">
-                <button 
-                  className="dropdown-item" 
-                  type="button" 
+                <button
+                  className="dropdown-item"
+                  type="button"
                   onClick={() => {
                     setShowDropdown(false);
                     navigate('/login');
@@ -86,7 +102,7 @@ function NavItem({ to, icon, label }) {
   );
 }
 
-/* ---------- Sidebar Icons (simple + consistent) ---------- */
+/* ---------- Sidebar Icons ---------- */
 function IconDashboard() {
   return (
     <svg viewBox="0 0 24 24" className="sico" aria-hidden="true">
@@ -171,6 +187,33 @@ function IconBell() {
         strokeLinejoin="round"
       />
       <path d="M10 19a2 2 0 0 0 4 0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+    </svg>
+  );
+}
+function IconMoon() {
+  return (
+    <svg viewBox="0 0 24 24" className="tico" aria-hidden="true">
+      <path
+        d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+function IconSun() {
+  return (
+    <svg viewBox="0 0 24 24" className="tico" aria-hidden="true">
+      <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="2" />
+      <path
+        d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }

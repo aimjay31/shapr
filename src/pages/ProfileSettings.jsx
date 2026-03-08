@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNightMode } from "../context/NightModeContext";
 import "../styles/ProfileSettings.css";
 
 const EyeIcon = () => (
@@ -40,6 +41,8 @@ const GearIcon = () => (
 );
 
 const ProfileSettings = () => {
+  const { nightMode, toggleNightMode, themeColor, setThemeColor } = useNightMode();
+
   const [view, setView] = useState("settings");
 
   const [savedProfile, setSavedProfile] = useState({
@@ -55,8 +58,6 @@ const ProfileSettings = () => {
   const [showPw, setShowPw] = useState({ new: false, confirm: false });
 
   const [settings, setSettings] = useState({
-    themeColor: "purple",
-    nightMode: false,
     profilePublic: true,
     shareStudyStats: false,
     allowNotifications: true,
@@ -87,11 +88,10 @@ const ProfileSettings = () => {
     setPasswords({ new: "", confirm: "" });
   };
 
-  const tc = `theme-${settings.themeColor}`;
-  const nm = settings.nightMode ? "night-mode" : "";
+  const tc = `theme-${themeColor}`;
 
   return (
-    <div className={`profile-settings-page ${nm} ${tc}`}>
+    <div className={`profile-settings-page ${tc}`}>
 
       {/* ===== SETTINGS VIEW ===== */}
       {view === "settings" && (
@@ -132,7 +132,7 @@ const ProfileSettings = () => {
                     key={c}
                     type="button"
                     className={`tc-dot c-${c} ${settings.themeColor === c ? "active" : ""}`}
-                    onClick={() => setSettings(p => ({ ...p, themeColor: c }))}
+                    onClick={() => setThemeColor(c)}
                     title={c.charAt(0).toUpperCase() + c.slice(1)}
                   >
                     {settings.themeColor === c ? "✓" : ""}
@@ -140,13 +140,18 @@ const ProfileSettings = () => {
                 ))}
               </div>
 
+              {/* Night Mode toggle — now controls global state via context */}
               <div className="nm-row">
                 <div className="nm-text">
                   <h4>Night Mode</h4>
                   <p>Switch between light and dark themes</p>
                 </div>
                 <label className="toggle-switch">
-                  <input type="checkbox" name="nightMode" checked={settings.nightMode} onChange={handleSettings} />
+                  <input
+                    type="checkbox"
+                    checked={nightMode}
+                    onChange={toggleNightMode}
+                  />
                   <span className="toggle-slider" />
                 </label>
               </div>
