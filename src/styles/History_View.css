@@ -1,6 +1,7 @@
 .history-container {
   padding: 32px 40px;
   min-height: 100vh;
+  transition: background 0.25s, color 0.25s;
 }
 
 .history-title {
@@ -8,6 +9,7 @@
   font-weight: 700;
   color: #1e293b;
   margin-bottom: 24px;
+  transition: color 0.25s;
 }
 
 .history-card {
@@ -15,9 +17,10 @@
   border-radius: 16px;
   box-shadow: 0 1px 12px rgba(103, 80, 164, 0.08);
   overflow: hidden;
+  transition: background 0.25s, box-shadow 0.25s;
 }
 
-/* Controls Section */
+/* Controls */
 .history-controls {
   display: flex;
   align-items: center;
@@ -25,13 +28,11 @@
   padding: 16px 24px;
   gap: 12px;
   border-bottom: 1px solid #ece2f9;
+  transition: border-color 0.25s;
 }
 
-/* Search Input */
-.search-wrapper {
-  position: relative;
-  flex: 1;
-}
+/* Search */
+.search-wrapper { position: relative; flex: 1; }
 
 .search-icon {
   position: absolute;
@@ -52,19 +53,13 @@
   background: #f8fafc;
   outline: none;
   box-sizing: border-box;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.25s, color 0.25s;
 }
 
-.search-input:focus {
-  border-color: #6750a4;
-}
+.search-input:focus { border-color: #6750a4; }
 
-/* Filter Dropdown */
-.filter-wrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
+/* Filter */
+.filter-wrapper { position: relative; display: flex; align-items: center; }
 
 .filter-icon {
   position: absolute;
@@ -84,36 +79,19 @@
   background: #f8fafc;
   cursor: pointer;
   outline: none;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, background 0.25s, color 0.25s;
 }
 
-.time-filter:focus {
-  border-color: #6750a4;
-}
+.time-filter:focus { border-color: #6750a4; }
 
-.chevron-icon {
-  position: absolute;
-  right: 10px;
-  width: 14px;
-  height: 14px;
-  pointer-events: none;
-}
+.chevron-icon { position: absolute; right: 10px; width: 14px; height: 14px; pointer-events: none; }
 
-/* Table Section */
-.table-wrapper {
-  overflow-x: auto;
-}
+/* Table */
+.table-wrapper { overflow-x: auto; }
 
-.history-table {
-  width: 100%;
-  border-collapse: collapse;
-  min-width: 700px;
-}
+.history-table { width: 100%; border-collapse: collapse; min-width: 700px; }
 
-.table-header {
-  border-top: 1.5px solid #ece2f9;
-  border-bottom: 1.5px solid #ece2f9;
-}
+.table-header { border-top: 1.5px solid #ece2f9; border-bottom: 1.5px solid #ece2f9; transition: border-color 0.25s; }
 
 .table-header-cell {
   padding: 14px 16px;
@@ -124,40 +102,49 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: #fff;
+  transition: background 0.25s, color 0.25s;
 }
 
-.empty-state {
-  text-align: center;
-  padding: 40px;
-  color: #94a3b8;
-  font-size: 14px;
-}
+.empty-state { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
 
-/* Responsive Design */
+/* Responsive */
 @media (max-width: 768px) {
-  .history-container {
-    padding: 16px 20px;
-  }
-
-  .history-title {
-    font-size: 24px;
-    margin-bottom: 16px;
-  }
-
-  .history-controls {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .search-wrapper {
-    width: 100%;
-  }
-
-  .filter-wrapper {
-    width: 100%;
-  }
-
-  .time-filter {
-    width: 100%;
-  }
+  .history-container { padding: 16px 20px; }
+  .history-title     { font-size: 24px; margin-bottom: 16px; }
+  .history-controls  { flex-direction: column; gap: 12px; }
+  .search-wrapper, .filter-wrapper, .time-filter { width: 100%; }
 }
+
+/* =============================================
+   NIGHT MODE
+   ============================================= */
+.night-mode.history-container { background: transparent; }
+
+.night-mode .history-title    { color: #f0f0f0; }
+
+.night-mode .history-card {
+  background: #1e1e35;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.night-mode .history-controls { border-bottom-color: #2a2a45; }
+
+.night-mode .search-input,
+.night-mode .time-filter {
+  background: #12121f;
+  border-color: #3a3a5c;
+  color: #e0e0e0;
+}
+
+.night-mode .search-input:focus,
+.night-mode .time-filter:focus { border-color: #7C5BD6; }
+
+.night-mode .table-header     { border-color: #2a2a45; }
+
+.night-mode .table-header-cell {
+  background: #1e1e35;
+  color: #8b8fb8;
+  border-color: #2a2a45;
+}
+
+.night-mode .empty-state { color: #6b7280; }
