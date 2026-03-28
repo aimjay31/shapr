@@ -13,8 +13,8 @@
   --surface-2:    #f7f5fd;
   --border:       #e8e2f5;
   --border-strong:#d4ccf0;
-  --text-1:       #1a1535;
-  --text-2:       #6b6585;
+  --text-1:       #111827;
+  --text-2:       #6b7280;
   --text-3:       #b0aac8;
   --radius:       16px;
   --radius-sm:    10px;
@@ -28,7 +28,7 @@
 .profile-settings-page {
   min-height: 100vh;
   background: var(--bg);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px;
   color: var(--text-1);
   padding: 28px 32px 48px;
@@ -53,9 +53,9 @@
 
 /* ===== PAGE TITLE ===== */
 .psp-page-title {
-  font-family: 'Outfit', sans-serif;
-  font-size: 24px;
-  font-weight: 800;
+  font-family: 'Inter', sans-serif;
+  font-size: 38px;
+  font-weight: 900;
   color: var(--text-1);
   letter-spacing: -0.4px;
   opacity: 0;
@@ -127,7 +127,7 @@
 .ph-info { flex: 1; }
 
 .ph-name {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px; font-weight: 800;
   color: var(--text-1);
   margin-bottom: 2px;
@@ -152,7 +152,7 @@
   background: var(--accent);
   border: none; border-radius: var(--radius-sm);
   color: white; font-size: 13px; font-weight: 700;
-  cursor: pointer; font-family: 'DM Sans', sans-serif;
+  cursor: pointer; font-family: 'Inter', sans-serif;
   transition: all var(--transition);
   white-space: nowrap;
   box-shadow: 0 4px 14px rgba(124,91,214,0.3);
@@ -188,7 +188,7 @@
 }
 
 .card-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 14px; font-weight: 700;
   color: var(--text-1);
   margin: 0 0 18px;
@@ -302,7 +302,7 @@ input:checked + .toggle-slider:before {
   color: var(--accent);
   background: var(--accent-light);
   border: none; cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   padding: 6px 14px; border-radius: 8px;
   transition: all var(--transition);
 }
@@ -408,7 +408,7 @@ input:checked + .toggle-slider:before {
   border-radius: var(--radius-sm);
   font-size: 13px; font-weight: 600;
   color: var(--text-2); cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: all var(--transition);
 }
 
@@ -420,7 +420,7 @@ input:checked + .toggle-slider:before {
   border-radius: var(--radius-sm);
   font-size: 13px; font-weight: 700;
   color: white; cursor: pointer;
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   transition: all var(--transition);
   box-shadow: 0 4px 14px rgba(124,91,214,0.3);
 }
@@ -451,7 +451,7 @@ input:checked + .toggle-slider:before {
 .back-link:hover { color: var(--accent); border-color: var(--accent-mid); background: var(--accent-light); }
 
 .edit-title {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 20px; font-weight: 800;
   color: var(--text-1); letter-spacing: -0.3px;
 }
@@ -535,7 +535,7 @@ input:checked + .toggle-slider:before {
 .streak-fire { font-size: 16px; }
 
 .cp-divider { height: 1px; background: var(--border); margin: 4px 0 20px; }
-.cp-title { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-1); margin: 0 0 16px; }
+.cp-title { font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 700; color: var(--text-1); margin: 0 0 16px; }
 
 .pw-wrap { position: relative; }
 .pw-wrap .form-input { padding-right: 44px; letter-spacing: 0.12em; }
@@ -641,6 +641,7 @@ input:checked + .toggle-slider:before {
 .night-mode .change-pw-link {
   background: rgba(124,91,214,0.2);
   color: #c4b5fd;
+
 }
 .night-mode .change-pw-link:hover { background: var(--accent); color: white; }
 

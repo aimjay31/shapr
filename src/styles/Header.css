@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap');
 
 .header {
   height: 70px;
@@ -7,17 +7,17 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 40px;
-  font-family: 'Roboto', sans-serif;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* fixed */
-  color: #6A0DAD; /* readable purple */
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); 
   background-color: white;
 }
 
 /* LOGO */
 .logo {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 900; /* Matched Dashboard */
   letter-spacing: 1px;
+  color: #7C5BD6; /* Matched Dashboard */
 }
 
 /* RIGHT SIDE */
@@ -29,7 +29,8 @@
 
 /* Language */
 .language {
-  font-weight: 500;
+  font-weight: 800; /* Matched Dashboard */
+  color: #6b7280; /* Matched Dashboard */
   cursor: pointer;
 }
 
@@ -76,10 +77,11 @@
   margin: 0;
   padding: 10px 16px;
   cursor: pointer;
-  font-weight: 500;
-  color: black;
+  font-weight: 800; /* Matched Dashboard */
+  color: #111827; /* Matched Dashboard */
 }
 
 .dropdown p:hover {
   background: #F3E8FF;
+  color: #7C5BD6;
 }

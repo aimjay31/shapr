@@ -2,11 +2,12 @@
   padding: 32px 40px;
   min-height: 100vh;
   transition: background 0.25s, color 0.25s;
+  font-family: 'inter', sans-serif;
 }
 
 .history-title {
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 38px;
+  font-weight: 900;
   color: #1e293b;
   margin-bottom: 24px;
   transition: color 0.25s;
@@ -46,10 +47,12 @@
 .search-input {
   width: 100%;
   padding: 10px 12px 10px 38px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
   border: 1px solid #ece2f9;
   border-radius: 10px;
   font-size: 14px;
-  color: #1e293b;
+  color: #111827;
   background: #f8fafc;
   outline: none;
   box-sizing: border-box;
@@ -73,10 +76,12 @@
 .time-filter {
   appearance: none;
   padding: 10px 36px 10px 34px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   border: 1px solid #ece2f9;
   border-radius: 10px;
   font-size: 14px;
-  color: #1e293b;
+  color: #111;
   background: #f8fafc;
   cursor: pointer;
   outline: none;
@@ -100,14 +105,14 @@
   text-align: left;
   font-size: 11px;
   font-weight: 700;
-  color: #64748b;
+  color: #6b7280;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   background: #fff;
   transition: background 0.25s, color 0.25s;
 }
 
-.empty-state { text-align: center; padding: 40px; color: #94a3b8; font-size: 14px; }
+.empty-state { text-align: center; padding: 40px; color: #6b7280; font-size: 14px; font-weight: 700;}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -171,9 +176,12 @@
   to { opacity: 1; transform: scale(1); }
 }
 
-.history-modal-title { font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #1e293b; }
-.history-modal-subtitle { font-size: 14px; color: #94a3b8; margin-bottom: 24px; }
+.history-modal-title { font-size: 24px; font-weight: 900; margin-bottom: 8px; color: #111827; }
+.history-modal-subtitle { font-size: 14px; font-weight: 700; color: #6b7280; margin-bottom: 24px; }
+.detail-item span { font-size: 10px; font-weight: 900; color: #6b7280; text-transform: uppercase; margin-bottom: 4px; }
+.detail-item strong { font-size: 14px; font-weight: 800; color: #111827; }
 
+.history-close-btn { font-family: 'Inter', sans-serif; font-weight: 900; }
 .details-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left;
   margin-bottom: 24px; background: #f8fafc; padding: 20px; border-radius: 12px;

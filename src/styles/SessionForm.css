@@ -1,15 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap');
+
 .sf-main {
   flex: 1;
   padding: 26px 28px 34px;
   transition: background 0.25s, color 0.25s;
+  font-family: 'Inter', sans-serif;
 }
 
 .sf-title {
   margin: 0 0 18px;
-  font-size: 34px;
-  font-weight: 800;
+  font-size: 38px; /* Matched to Dashboard */
+  font-weight: 900; /* Unified heavy weight */
   letter-spacing: -0.3px;
-  color: #111;
+  color: #111827; /* Dashboard Deep Black */
   transition: color 0.25s;
 }
 
@@ -19,8 +22,8 @@
 .sf-panel {
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(30,20,60,0.12);
-  border: 1px solid rgba(40,20,90,0.10);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.08); /* Smoothed shadow */
+  border: 1px solid rgba(0,0,0,0.08);
   overflow: hidden;
   transition: background 0.25s, border-color 0.25s, box-shadow 0.25s;
 }
@@ -29,8 +32,8 @@
 
 .sf-panel-head {
   padding: 18px 22px 8px;
-  font-weight: 800;
-  color: #1a1a1a;
+  font-weight: 900; /* Unified heavy weight */
+  color: #111827; /* Dashboard Deep Black */
   font-size: 16px;
   transition: color 0.25s;
 }
@@ -39,13 +42,13 @@
 
 .sf-headIco {
   width: 28px; height: 28px; border-radius: 9px;
-  background: rgba(124,58,237,0.12);
-  color: #7c3aed;
+  background: rgba(124,91,214,0.12); /* Dashboard Soft Purple */
+  color: #7C5BD6; /* Dashboard Purple */
   display: flex; align-items: center; justify-content: center;
   transition: background 0.25s;
 }
 
-.sf-headIco.home { background: rgba(124,58,237,0.10); }
+.sf-headIco.home { background: rgba(124,91,214,0.10); }
 
 .sf-panel-body { padding: 10px 22px 20px; }
 
@@ -56,8 +59,8 @@
 .sf-label {
   display: block;
   font-size: 12px;
-  font-weight: 800;
-  color: #2b2b2b;
+  font-weight: 800; /* ExtraBold */
+  color: #111827; /* Dashboard Deep Black */
   margin-bottom: 7px;
   transition: color 0.25s;
 }
@@ -69,7 +72,8 @@
 
 .sf-icon {
   position: absolute; left: 14px;
-  color: #b8b1d8; width: 18px; height: 18px;
+  color: #6b7280; /* Dashboard Gray */
+  width: 18px; height: 18px;
   display: flex; align-items: center; justify-content: center;
 }
 
@@ -80,9 +84,9 @@
   background: #fff;
   padding: 0 14px 0 42px;
   outline: none;
-  box-shadow: 0 8px 18px rgba(30,20,60,0.10);
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
-  color: #2a2a2a;
+  color: #111827; /* Dashboard Deep Black */
   transition: background 0.25s, border-color 0.25s, color 0.25s, box-shadow 0.25s;
 }
 
@@ -90,8 +94,8 @@
 
 .sf-input:focus,
 .sf-textarea:focus {
-  border-color: rgba(124,58,237,0.45);
-  box-shadow: 0 10px 22px rgba(124,58,237,0.18);
+  border-color: #7C5BD6;
+  box-shadow: 0 0 0 4px rgba(124,91,214,0.15);
 }
 
 /* Status buttons */
@@ -100,10 +104,11 @@
 .sf-statusBtn {
   height: 46px; border-radius: 10px;
   border: 1px solid rgba(0,0,0,0.08);
-  background: #f3f4f6; color: #4b5563;
+  background: #f3f4f6; color: #6b7280; /* Dashboard Gray */
   font-weight: 800;
+  font-family: 'Inter', sans-serif;
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  box-shadow: 0 10px 18px rgba(30,20,60,0.10);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.05);
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
@@ -111,23 +116,23 @@
 .sf-statusBtn .sf-statusIcon {
   width: 22px; height: 22px; border-radius: 999px;
   display: flex; align-items: center; justify-content: center;
-  background: rgba(0,0,0,0.08); color: #374151;
+  background: rgba(0,0,0,0.08); color: #111827;
   transition: background 0.2s;
 }
 
-.sf-statusBtn.active.ok  { background: #6d28d9; border-color: #6d28d9; color: #fff; }
+.sf-statusBtn.active.ok  { background: #7C5BD6; border-color: #7C5BD6; color: #fff; }
 .sf-statusBtn.active.ok .sf-statusIcon  { background: rgba(255,255,255,0.25); color: #fff; }
-.sf-statusBtn.active.bad { background: #e5e7eb; border-color: #e5e7eb; color: #374151; }
-.sf-statusBtn.active.bad .sf-statusIcon { background: rgba(0,0,0,0.10); color: #374151; }
+.sf-statusBtn.active.bad { background: #e5e7eb; border-color: #e5e7eb; color: #111827; }
+.sf-statusBtn.active.bad .sf-statusIcon { background: rgba(0,0,0,0.10); color: #111827; }
 
 /* Lower grid */
 .sf-lowerGrid { margin-top: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
 
 /* Sleep */
 .sf-sleepTop  { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
-.sf-sleepVal  { font-weight: 900; color: #6d28d9; font-size: 12px; }
-.sf-range     { width: 100%; margin-top: 8px; accent-color: #6d28d9; }
-.sf-rangeMarks { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: #9ca3af; margin-top: 4px; }
+.sf-sleepVal  { font-weight: 900; color: #7C5BD6; font-size: 13px; }
+.sf-range     { width: 100%; margin-top: 8px; accent-color: #7C5BD6; }
+.sf-rangeMarks { display: flex; justify-content: space-between; font-size: 11px; font-weight: 800; color: #6b7280; margin-top: 4px; }
 
 /* Notes */
 .sf-notesPanel { margin-top: 18px; }
@@ -137,9 +142,10 @@
   border: 1px solid rgba(0,0,0,0.10);
   background: #fff;
   padding: 12px 14px; outline: none;
-  box-shadow: 0 10px 18px rgba(30,20,60,0.08);
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 10px 18px rgba(0,0,0,0.05);
   resize: vertical;
-  font-weight: 700; color: #2a2a2a;
+  font-weight: 700; color: #111827;
   transition: background 0.25s, border-color 0.25s, color 0.25s;
 }
 
@@ -149,13 +155,14 @@
 .sf-saveBtn {
   height: 44px; padding: 0 18px;
   border-radius: 10px; border: none;
-  background: #6d28d9; color: #fff;
+  background: #7C5BD6; color: #fff;
+  font-family: 'Inter', sans-serif;
   font-weight: 900; cursor: pointer;
-  box-shadow: 0 12px 22px rgba(109,40,217,0.25);
-  transition: filter 0.15s;
+  box-shadow: 0 12px 22px rgba(124,91,214,0.25);
+  transition: transform 0.15s, background 0.15s;
 }
 
-.sf-saveBtn:hover { filter: brightness(1.06); }
+.sf-saveBtn:hover { background: #6a4bc2; transform: translateY(-2px); }
 
 .sf-svg { width: 18px; height: 18px; }
 
@@ -177,7 +184,7 @@
 .night-mode .sf-panel-head { color: #e0e0f0; }
 
 .night-mode .sf-headIco {
-  background: rgba(167,139,250,0.15);
+  background: rgba(124,91,214,0.15);
   color: #a78bfa;
 }
 
@@ -197,7 +204,7 @@
   box-shadow: 0 0 0 3px rgba(124,91,214,0.2);
 }
 
-.night-mode .sf-icon { color: #6b5fa0; }
+.night-mode .sf-icon { color: #8b8fb8; }
 
 .night-mode .sf-statusBtn {
   background: #16162a;
@@ -211,7 +218,7 @@
   color: #9ca3b8;
 }
 
-.night-mode .sf-statusBtn.active.ok  { background: #6d28d9; border-color: #7c3aed; color: #fff; }
+.night-mode .sf-statusBtn.active.ok  { background: #7C5BD6; border-color: #7C5BD6; color: #fff; }
 .night-mode .sf-statusBtn.active.bad { background: #2a1f1f; border-color: #3a2a2a; color: #f87171; }
 .night-mode .sf-statusBtn.active.bad .sf-statusIcon { background: rgba(248,113,113,0.15); color: #f87171; }
 

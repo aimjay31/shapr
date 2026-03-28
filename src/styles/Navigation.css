@@ -218,6 +218,8 @@
   flex: 1;
   padding: 24px 28px;
   overflow-y: auto;
+  display: flex;
+  flex-direction: column; 
 }
 
 /* =============================================
