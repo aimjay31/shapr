@@ -148,21 +148,3 @@
 }
 
 .night-mode .empty-state { color: #6b7280; }
-
-/* =============================================
-   GLOBAL THEME COLORS — History (scoped)
-   ============================================= */
-.history-container.theme-blue  .search-input:focus,
-.history-container.theme-blue  .time-filter:focus   { border-color: #3B82F6; }
-.history-container.theme-blue  .table-header        { border-color: #3B82F6; }
-.history-container.theme-blue  .table-header-cell   { color: #3B82F6; }
-
-.history-container.theme-green .search-input:focus,
-.history-container.theme-green .time-filter:focus   { border-color: #10B981; }
-.history-container.theme-green .table-header        { border-color: #10B981; }
-.history-container.theme-green .table-header-cell   { color: #10B981; }
-
-.history-container.theme-red   .search-input:focus,
-.history-container.theme-red   .time-filter:focus   { border-color: #EF4444; }
-.history-container.theme-red   .table-header        { border-color: #EF4444; }
-.history-container.theme-red   .table-header-cell   { color: #EF4444; }

@@ -11,7 +11,7 @@ const INITIAL_TASKS = [
 ];
 
 export default function PomTime() {
-  const { nightMode, themeColor } = useNightMode();
+  const { nightMode } = useNightMode();
 
   const [mode,      setMode]      = useState("focus");
   const [timeLeft,  setTimeLeft]  = useState(DURATIONS.focus);
@@ -61,7 +61,7 @@ export default function PomTime() {
     setTasks((prev) => prev.map((task) => task.id === id ? { ...task, done: !task.done } : task));
 
   return (
-    <div className={`pomtime-page theme-${themeColor}${nightMode ? " night-mode" : ""}`}>
+    <div className={`pomtime-page${nightMode ? " night-mode" : ""}`}>
       <div className="pomtime-layout">
 
         {/* ── Sidebar ── */}

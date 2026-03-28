@@ -312,7 +312,6 @@
 .night-mode .privacy-label,
 .night-mode .nm-text h4,
 .night-mode .field-label,
-.night-mode .tc-label,
 .night-mode .form-label,
 .night-mode .goal-value      { color: #c0c0d8 !important; }
 .night-mode .nm-text p       { color: #6b6585 !important; }
@@ -322,43 +321,3 @@
     radial-gradient(ellipse 60% 40% at 80% 10%, rgba(124,91,214,0.12) 0%, transparent 60%),
     radial-gradient(ellipse 40% 30% at 10% 80%, rgba(124,91,214,0.08) 0%, transparent 50%);
 }
-
-/* =============================================
-   GLOBAL THEME COLORS
-   Applied via .theme-* on .app-shell
-   ============================================= */
-
-/* ── Purple (default) ── */
-.theme-purple .nav-brand          { color: #7C5BD6; }
-.theme-purple .nav-item.active    { background: #7C5BD6; }
-.theme-purple .nav-item:hover     { color: #7C5BD6; }
-.theme-purple .topbtn:hover       { color: #7C5BD6; }
-
-/* ── Blue ── */
-.theme-blue .nav-brand            { color: #3B82F6; }
-.theme-blue .nav-item.active      { background: #3B82F6; }
-.theme-blue .nav-item:hover       { color: #3B82F6; background: #eff6ff; }
-.theme-blue .topbtn:hover         { color: #3B82F6; background: #eff6ff; }
-.theme-blue .topuser:hover        { background: #eff6ff; }
-
-/* ── Green ── */
-.theme-green .nav-brand           { color: #10B981; }
-.theme-green .nav-item.active     { background: #10B981; }
-.theme-green .nav-item:hover      { color: #10B981; background: #ecfdf5; }
-.theme-green .topbtn:hover        { color: #10B981; background: #ecfdf5; }
-.theme-green .topuser:hover       { background: #ecfdf5; }
-
-/* ── Red ── */
-.theme-red .nav-brand             { color: #EF4444; }
-.theme-red .nav-item.active       { background: #EF4444; }
-.theme-red .nav-item:hover        { color: #EF4444; background: #fef2f2; }
-.theme-red .topbtn:hover          { color: #EF4444; background: #fef2f2; }
-.theme-red .topuser:hover         { background: #fef2f2; }
-
-/* ── Night mode theme adjustments ── */
-.night-mode.theme-blue  .nav-item:hover  { background: #1e2d45; color: #93c5fd; }
-.night-mode.theme-blue  .topbtn:hover    { background: #1e2d45; color: #93c5fd; }
-.night-mode.theme-green .nav-item:hover  { background: #1a2e28; color: #6ee7b7; }
-.night-mode.theme-green .topbtn:hover    { background: #1a2e28; color: #6ee7b7; }
-.night-mode.theme-red   .nav-item:hover  { background: #2e1a1a; color: #fca5a5; }
-.night-mode.theme-red   .topbtn:hover    { background: #2e1a1a; color: #fca5a5; }

@@ -3,7 +3,7 @@ import "../styles/SessionForm.css";
 import { useNightMode } from "../context/NightModeContext";
 
 export default function SessionForm() {
-  const { nightMode, themeColor } = useNightMode();
+  const { nightMode } = useNightMode();
 
   const [date, setDate]             = useState("2024-04-25");
   const [startTime, setStartTime]   = useState("08:00");
@@ -21,7 +21,7 @@ export default function SessionForm() {
   };
 
   return (
-    <div className={`sf-main theme-${themeColor}${nightMode ? " night-mode" : ""}`}>
+    <div className={`sf-main${nightMode ? " night-mode" : ""}`}>
       <h1 className="sf-title">Study Session Form</h1>
 
       <form className="sf-form" onSubmit={handleSubmit}>

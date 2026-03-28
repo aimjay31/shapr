@@ -19,7 +19,7 @@ import {
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, ArcElement, Tooltip, Legend);
 
 export default function Dashboard() {
-  const { nightMode, themeColor } = useNightMode();
+  const { nightMode } = useNightMode();
 
   const total = 130;
   const productive = 78;
@@ -81,7 +81,7 @@ export default function Dashboard() {
   const [showTips, setShowTips] = useState(true);
 
   return (
-    <div className={`theme-${themeColor}${nightMode ? " night-mode" : ""}`}>
+    <div className={nightMode ? "night-mode" : ""}>
       <div className="dashboard-with-button">
         <h1 className="dash-h1">Dashboard</h1>
         <button className="toggle-btn" onClick={() => setShowTips(!showTips)}>

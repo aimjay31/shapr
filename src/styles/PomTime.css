@@ -254,10 +254,3 @@
 .night-mode .sound-card { background: #16162a; }
 
 .night-mode .sound-label { color: #6b7280; }
-
-/* =============================================
-   GLOBAL THEME COLORS — PomTime
-   ============================================= */
-.pomtime-page.theme-blue  { --pom-primary: #3B82F6; }
-.pomtime-page.theme-green { --pom-primary: #10B981; }
-.pomtime-page.theme-red   { --pom-primary: #EF4444; }

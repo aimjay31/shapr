@@ -173,22 +173,3 @@
 .night-mode .tips-ico    { background: #12121f; }
 
 .night-mode .toggle-btn  { background-color: #7C5BD6; }
-
-/* =============================================
-   GLOBAL THEME COLORS — Dashboard
-   ============================================= */
-.theme-blue .dash-cards .card-ico.purple    { color: #3B82F6; }
-.theme-green .dash-cards .card-ico.purple    { color: #10B981; }
-.theme-red .dash-cards .card-ico.purple    { color: #EF4444; }
-
-.theme-blue  .tablepanel .table thead th  { color: #3B82F6; border-bottom-color: #3B82F6; }
-.theme-green .tablepanel .table thead th  { color: #10B981; border-bottom-color: #10B981; }
-.theme-red   .tablepanel .table thead th  { color: #EF4444; border-bottom-color: #EF4444; }
-
-.theme-blue  .predict             { background: #3B82F6; }
-.theme-green .predict             { background: #10B981; }
-.theme-red   .predict             { background: #EF4444; }
-
-.theme-blue  .toggle-btn          { background: #3B82F6; }
-.theme-green .toggle-btn          { background: #10B981; }
-.theme-red   .toggle-btn          { background: #EF4444; }

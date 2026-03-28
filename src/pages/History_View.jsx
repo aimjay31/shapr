@@ -16,7 +16,7 @@ const COLUMNS = ["DATE & TIME", "SUBJECT", "DURATION", "MOOD", "SLEEP (HRS)", "R
 const TIME_FILTERS = ["All time", "This week", "This month", "This year"];
 
 export default function HistoryView() {
-  const { nightMode, themeColor } = useNightMode();
+  const { nightMode } = useNightMode();
   const [search, setSearch]         = useState("");
   const [timeFilter, setTimeFilter] = useState("All time");
 
@@ -31,7 +31,7 @@ export default function HistoryView() {
   });
 
   return (
-    <div className={`history-container theme-${themeColor}${nightMode ? " night-mode" : ""}`}>
+    <div className={`history-container${nightMode ? " night-mode" : ""}`}>
       <h1 className="history-title">History</h1>
 
       <div className="history-card">

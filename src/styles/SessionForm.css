@@ -217,21 +217,3 @@
 
 .night-mode .sf-rangeMarks { color: #6b7280; }
 .night-mode .sf-sleepVal   { color: #a78bfa; }
-
-/* =============================================
-   GLOBAL THEME COLORS — SessionForm
-   ============================================= */
-.sf-main.theme-blue  .sf-saveBtn          { background: #3B82F6; box-shadow: 0 12px 22px rgba(59,130,246,0.25); }
-.sf-main.theme-blue  .sf-range            { accent-color: #3B82F6; }
-.sf-main.theme-blue  .sf-sleepVal         { color: #3B82F6; }
-.sf-main.theme-blue  .sf-statusBtn.active.ok { background: #3B82F6; border-color: #3B82F6; }
-
-.sf-main.theme-green .sf-saveBtn          { background: #10B981; box-shadow: 0 12px 22px rgba(16,185,129,0.25); }
-.sf-main.theme-green .sf-range            { accent-color: #10B981; }
-.sf-main.theme-green .sf-sleepVal         { color: #10B981; }
-.sf-main.theme-green .sf-statusBtn.active.ok { background: #10B981; border-color: #10B981; }
-
-.sf-main.theme-red   .sf-saveBtn          { background: #EF4444; box-shadow: 0 12px 22px rgba(239,68,68,0.25); }
-.sf-main.theme-red   .sf-range            { accent-color: #EF4444; }
-.sf-main.theme-red   .sf-sleepVal         { color: #EF4444; }
-.sf-main.theme-red   .sf-statusBtn.active.ok { background: #EF4444; border-color: #EF4444; }
