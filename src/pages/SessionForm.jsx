@@ -1,23 +1,41 @@
 import React, { useState } from "react";
 import "../styles/SessionForm.css";
 import { useNightMode } from "../context/NightModeContext";
+import { useSession } from "../context/SessionContext";
 
 export default function SessionForm() {
   const { nightMode } = useNightMode();
+  const { setSessions } = useSession();
 
-  const [date, setDate]             = useState("2024-04-25");
-  const [startTime, setStartTime]   = useState("08:00");
-  const [duration, setDuration]     = useState(90);
-  const [status, setStatus]         = useState("productive");
-  const [mood, setMood]             = useState("Focused");
+  const [date, setDate] = useState("2024-04-25");
+  const [startTime, setStartTime] = useState("08:00");
+  const [duration, setDuration] = useState(90);
+  const [status, setStatus] = useState("productive");
+  const [mood, setMood] = useState("Focused");
   const [sleepHours, setSleepHours] = useState(7);
   const [breaksTaken, setBreaksTaken] = useState(2);
   const [environment, setEnvironment] = useState("Quiet Room");
-  const [notes, setNotes]           = useState("");
+  const [notes, setNotes] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Study Session:", { date, startTime, duration, status, mood, sleepHours, breaksTaken, environment, notes });
+
+    const newSession = {
+      date,
+      startTime,
+      duration,
+      status,
+      mood,
+      sleepHours,
+      breaksTaken,
+      environment,
+      notes,
+    };
+
+    // ✅ THIS is what makes dashboard update
+    setSessions((prev) => [...prev, newSession]);
+
+    console.log("Study Session:", newSession);
   };
 
   return (
@@ -35,14 +53,25 @@ export default function SessionForm() {
                 <label className="sf-label">Date</label>
                 <div className="sf-inputWrap">
                   <span className="sf-icon"><IcoCalendar /></span>
-                  <input className="sf-input" type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+                  <input
+                    className="sf-input"
+                    type="date"
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
+                  />
                 </div>
               </div>
+
               <div className="sf-field">
                 <label className="sf-label">Start Time</label>
                 <div className="sf-inputWrap">
                   <span className="sf-icon"><IcoClock /></span>
-                  <input className="sf-input" type="time" value={startTime} onChange={(e) => setStartTime(e.target.value)} />
+                  <input
+                    className="sf-input"
+                    type="time"
+                    value={startTime}
+                    onChange={(e) => setStartTime(e.target.value)}
+                  />
                 </div>
               </div>
             </div>
@@ -50,7 +79,13 @@ export default function SessionForm() {
             <div className="sf-grid-2 sf-grid-2-tight">
               <div className="sf-field">
                 <label className="sf-label">Duration (minutes)</label>
-                <input className="sf-input plain" type="number" min="1" value={duration} onChange={(e) => setDuration(Number(e.target.value))} />
+                <input
+                  className="sf-input plain"
+                  type="number"
+                  min="1"
+                  value={duration}
+                  onChange={(e) => setDuration(Number(e.target.value))}
+                />
               </div>
               <div className="sf-field" />
             </div>
@@ -58,11 +93,20 @@ export default function SessionForm() {
             <div className="sf-field sf-mt">
               <label className="sf-label">Actual Result</label>
               <div className="sf-statusRow">
-                <button type="button" className={`sf-statusBtn ${status === "productive" ? "active ok" : ""}`} onClick={() => setStatus("productive")}>
+                <button
+                  type="button"
+                  className={`sf-statusBtn ${status === "productive" ? "active ok" : ""}`}
+                  onClick={() => setStatus("productive")}
+                >
                   <span className="sf-statusIcon"><IcoCheck /></span>
                   Productive
                 </button>
-                <button type="button" className={`sf-statusBtn ${status === "unproductive" ? "active bad" : ""}`} onClick={() => setStatus("unproductive")}>
+
+                <button
+                  type="button"
+                  className={`sf-statusBtn ${status === "unproductive" ? "active bad" : ""}`}
+                  onClick={() => setStatus("unproductive")}
+                >
                   <span className="sf-statusIcon"><IcoX /></span>
                   Unproductive
                 </button>
@@ -78,10 +122,15 @@ export default function SessionForm() {
               <span className="sf-headIco"><IcoSpark /></span>
               Wellness &amp; Context
             </div>
+
             <div className="sf-panel-body">
               <div className="sf-field">
                 <label className="sf-label">Mood</label>
-                <select className="sf-input plain" value={mood} onChange={(e) => setMood(e.target.value)}>
+                <select
+                  className="sf-input plain"
+                  value={mood}
+                  onChange={(e) => setMood(e.target.value)}
+                >
                   <option>Focused</option>
                   <option>Motivated</option>
                   <option>Neutral</option>
@@ -90,12 +139,24 @@ export default function SessionForm() {
                   <option>Sleepy</option>
                 </select>
               </div>
+
               <div className="sf-sleepTop">
                 <label className="sf-label">Sleep Hours</label>
                 <span className="sf-sleepVal">{sleepHours}h</span>
               </div>
-              <input className="sf-range" type="range" min="0" max="12" value={sleepHours} onChange={(e) => setSleepHours(Number(e.target.value))} />
-              <div className="sf-rangeMarks"><span>0</span><span>12</span></div>
+
+              <input
+                className="sf-range"
+                type="range"
+                min="0"
+                max="12"
+                value={sleepHours}
+                onChange={(e) => setSleepHours(Number(e.target.value))}
+              />
+
+              <div className="sf-rangeMarks">
+                <span>0</span><span>12</span>
+              </div>
             </div>
           </section>
 
@@ -104,14 +165,26 @@ export default function SessionForm() {
               <span className="sf-headIco home"><IcoHome /></span>
               Environment
             </div>
+
             <div className="sf-panel-body">
               <div className="sf-field">
                 <label className="sf-label">Breaks Taken</label>
-                <input className="sf-input plain" type="number" min="0" value={breaksTaken} onChange={(e) => setBreaksTaken(Number(e.target.value))} />
+                <input
+                  className="sf-input plain"
+                  type="number"
+                  min="0"
+                  value={breaksTaken}
+                  onChange={(e) => setBreaksTaken(Number(e.target.value))}
+                />
               </div>
+
               <div className="sf-field">
                 <label className="sf-label">Environment</label>
-                <select className="sf-input plain" value={environment} onChange={(e) => setEnvironment(e.target.value)}>
+                <select
+                  className="sf-input plain"
+                  value={environment}
+                  onChange={(e) => setEnvironment(e.target.value)}
+                >
                   <option>Quiet Room</option>
                   <option>Library</option>
                   <option>Room with Music</option>
@@ -127,10 +200,18 @@ export default function SessionForm() {
           <div className="sf-panel-body">
             <div className="sf-field">
               <label className="sf-label">Notes</label>
-              <textarea className="sf-textarea" rows={4} placeholder="" value={notes} onChange={(e) => setNotes(e.target.value)} />
+              <textarea
+                className="sf-textarea"
+                rows={4}
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+              />
             </div>
+
             <div className="sf-actions">
-              <button type="submit" className="sf-saveBtn">Save Session</button>
+              <button type="submit" className="sf-saveBtn">
+                Save Session
+              </button>
             </div>
           </div>
         </section>

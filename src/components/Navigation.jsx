@@ -17,9 +17,7 @@ export default function Navigation({ children }) {
         <nav className="nav-menu">
           <NavItem to="/dashboard"               icon={<IconDashboard />}  label="Dashboard" />
           <NavItem to="/SessionForm"             icon={<IconForm />}       label="Study Session Form" />
-          <NavItem to="/productivity-prediction" icon={<IconPrediction />} label="Productivity Prediction" />
           <NavItem to="/history"                 icon={<IconHistory />}    label="History" />
-          <NavItem to="/analytics-reports"       icon={<IconAnalytics />}  label="Analytics Reports" />
           <NavItem to="/pomtime"                 icon={<IconPomodoro />}   label="Pomodoro Timer" />
           <div className="nav-divider" />
           <NavItem to="/profile-settings" icon={<IconSettings />} label="Profile & Settings" />
