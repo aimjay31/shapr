@@ -9,7 +9,7 @@ export default function PomTime() {
   const { activeSession, setSessions, setActiveSession } = useSession();
   const navigate = useNavigate();
 
-  // 1. Durations from the form (defaults to 25/5 if form was skipped)
+  // 1. Durations (Defaults to 25/5 if they bypassed the form)
   const DURATIONS = { 
     focus: (activeSession?.workDuration || 25) * 60, 
     short: (activeSession?.breakDuration || 5) * 60, 
@@ -24,11 +24,11 @@ export default function PomTime() {
   const targetCycles = activeSession?.cycles || 4;
   const [currentCycle, setCurrentCycle] = useState(1);
 
-  // 3. Post-Session Modal State
+  // 3. Post-Session Modal States
   const [showModal, setShowModal] = useState(false);
   const [finalResult, setFinalResult] = useState("Productive");
 
-  // 4. Timer Logic with Auto-Cycle switching
+  // Timer Logic with Auto-Cycle switching
   useEffect(() => {
     if (!isRunning) return;
     const timer = setInterval(() => {
@@ -57,7 +57,6 @@ export default function PomTime() {
     return () => clearInterval(timer);
   }, [isRunning, mode, currentCycle, targetCycles, DURATIONS]);
 
- 
   const totalTime = DURATIONS[mode];
   const progress  = useMemo(() => timeLeft / totalTime, [timeLeft, totalTime]);
   const radius = 140;
@@ -79,23 +78,35 @@ export default function PomTime() {
   const handlePlayPause = () => setIsRunning((prev) => !prev);
   const handleReset = () => { setIsRunning(false); setTimeLeft(DURATIONS[mode]); };
   
+  // ==========================================
+  // THE NEW WARNING LOGIC
+  // ==========================================
   const handleFinish = () => {
+    
+    if (!activeSession) {
+      alert("Quick Timer Ended!\n\nYou didn't set up a formal Study Session, so this won't be saved to your Analytics Dashboard. \n\nTo track your productivity, please use the 'Prepare Study Session' form next time!");
+      
+      // Pause the timer and maybe send them to the dashboard or form
+      setIsRunning(false);
+      navigate('/SessionForm'); // Or navigate('/dashboard')
+      return; // Stop the code here so the modal doesn't open
+    }
+
+    // If they DID fill out the form, proceed normally to the modal
     setIsRunning(false);
     setShowModal(true);
   };
+  // ==========================================
 
- const handleSaveSession = () => {
+  const handleSaveSession = () => {
     const completedSession = {
       ...activeSession, 
       date: activeSession?.date || new Date().toISOString().split('T')[0],
       subject: activeSession?.subject || "Unplanned",
-      
-
       period: activeSession?.period || "Morning Hours", 
       startTime: activeSession?.startTime || "08:00",
-      
       duration: `${activeSession?.workDuration || 25} mins`,
-      result: finalResult, // 'Productive' or 'Not Productive'
+      result: finalResult, 
       sleep: activeSession?.sleepHours || 7,
       mood: activeSession?.mood || "Focused"
     };
@@ -117,8 +128,9 @@ export default function PomTime() {
             <div className="session-highlight">
               <div className="session-icon-wrap"><IcoClock /></div>
               <div className="session-copy">
-                <p className="session-title">{activeSession?.subject || "No Subject"}</p>
-                <p className="session-subtext">{activeSession?.taskName || "General Focus"}</p>
+                {/* Fallback text if they bypass the form */}
+                <p className="session-title">{activeSession?.subject || "Free Timer Mode"}</p>
+                <p className="session-subtext">{activeSession?.taskName || "Not tracking analytics"}</p>
               </div>
             </div>
 
@@ -173,7 +185,7 @@ export default function PomTime() {
         </main>
       </div>
 
-      {/* Productivity Modal */}
+      {/* Productivity Modal (Only shows if they filled out the form) */}
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-content">

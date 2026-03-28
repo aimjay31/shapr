@@ -56,7 +56,8 @@
   transition: border-color 0.2s ease, background 0.25s, color 0.25s;
 }
 
-.search-input:focus { border-color: #6750a4; }
+/* Updated to your exact Purple */
+.search-input:focus { border-color: #7C5BD6; }
 
 /* Filter */
 .filter-wrapper { position: relative; display: flex; align-items: center; }
@@ -82,7 +83,8 @@
   transition: border-color 0.2s ease, background 0.25s, color 0.25s;
 }
 
-.time-filter:focus { border-color: #6750a4; }
+/* Updated to your exact Purple */
+.time-filter:focus { border-color: #7C5BD6; }
 
 .chevron-icon { position: absolute; right: 10px; width: 14px; height: 14px; pointer-events: none; }
 
@@ -148,3 +150,48 @@
 }
 
 .night-mode .empty-state { color: #6b7280; }
+
+
+/* =============================================
+   DETAILS POPUP MODAL
+   ============================================= */
+.history-modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(15, 23, 42, 0.7); display: flex; align-items: center; justify-content: center;
+  z-index: 2000; backdrop-filter: blur(6px); padding: 20px;
+}
+
+.history-modal-content {
+  background: #ffffff; width: 100%; max-width: 450px; padding: 32px; border-radius: 20px; text-align: center;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2); animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.history-modal-title { font-size: 22px; font-weight: 900; margin-bottom: 8px; color: #1e293b; }
+.history-modal-subtitle { font-size: 14px; color: #94a3b8; margin-bottom: 24px; }
+
+.details-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left;
+  margin-bottom: 24px; background: #f8fafc; padding: 20px; border-radius: 12px;
+}
+
+.detail-item { display: flex; flex-direction: column; }
+.detail-item span { font-size: 10px; font-weight: 800; color: #94a3b8; text-transform: uppercase; margin-bottom: 4px; }
+.detail-item strong { font-size: 13px; font-weight: 700; color: #1e293b; }
+
+.history-close-btn { 
+  width: 100%; padding: 14px; border-radius: 12px; border: none; 
+  background: #7C5BD6; color: white; font-weight: 800; cursor: pointer; transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(124, 91, 214, 0.3);
+}
+.history-close-btn:hover { background: #6a4bc2; transform: translateY(-2px); }
+
+/* Night Mode Modal Overrides */
+.night-mode .history-modal-content { background: #1e1e35; border: 1px solid #2a2a45; }
+.night-mode .history-modal-title { color: #f0f0f0; }
+.night-mode .details-grid { background: #16162a; }
+.night-mode .detail-item strong { color: #e0e0f0; }
