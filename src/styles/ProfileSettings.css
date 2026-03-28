@@ -107,9 +107,7 @@
   transition: border-color var(--transition);
 }
 
-.profile-header-card:hover .ph-avatar-wrap img {
-  border-color: var(--accent-mid);
-}
+.profile-header-card:hover .ph-avatar-wrap img { border-color: var(--accent-mid); }
 
 .ph-edit-dot {
   position: absolute;
@@ -309,11 +307,7 @@ input:checked + .toggle-slider:before {
   transition: all var(--transition);
 }
 
-.change-pw-link:hover {
-  background: var(--accent);
-  color: white;
-  transform: translateX(2px);
-}
+.change-pw-link:hover { background: var(--accent); color: white; transform: translateX(2px); }
 
 /* ===== OTHER SETTINGS ===== */
 .other-fields-row {
@@ -418,11 +412,7 @@ input:checked + .toggle-slider:before {
   transition: all var(--transition);
 }
 
-.btn-cancel:hover {
-  background: var(--surface-2);
-  border-color: var(--accent-mid);
-  color: var(--text-1);
-}
+.btn-cancel:hover { background: var(--surface-2); border-color: var(--accent-mid); color: var(--text-1); }
 
 .btn-save {
   padding: 10px 24px;
@@ -458,11 +448,7 @@ input:checked + .toggle-slider:before {
   transition: all var(--transition);
 }
 
-.back-link:hover {
-  color: var(--accent);
-  border-color: var(--accent-mid);
-  background: var(--accent-light);
-}
+.back-link:hover { color: var(--accent); border-color: var(--accent-mid); background: var(--accent-light); }
 
 .edit-title {
   font-family: 'Outfit', sans-serif;
