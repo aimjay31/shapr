@@ -101,7 +101,6 @@ const ProfileSettings = () => {
     allowNotifications: true,
     language:           "English (US)",
     timeZone:           "(GMT-08:00) Pacific Time (US & Canada)",
-    dailyStudyGoal:     4,
   });
 
   const handleSettings = (e) => {
@@ -232,15 +231,6 @@ const ProfileSettings = () => {
                   <option>(GMT+08:00) Singapore</option>
                 </select>
               </div>
-            </div>
-            <div className="field-label">Study Goal (Daily)</div>
-            <div className="goal-row-wrap">
-              <span className="goal-label-inline">Daily Goal</span>
-              <input
-                type="range" className="goal-slider" name="dailyStudyGoal"
-                min={1} max={12} value={settings.dailyStudyGoal} onChange={handleSettings}
-              />
-              <span className="goal-value">{settings.dailyStudyGoal} hrs</span>
             </div>
           </div>
 
